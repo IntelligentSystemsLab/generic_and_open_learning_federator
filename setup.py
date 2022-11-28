@@ -15,7 +15,7 @@ requirements = [ ]
 test_requirements = [ ]
 
 setup(
-    author="Generic and Open Learning Federator",
+    author="MatZaharia",
     author_email='guozh29@mail2.sysu.edu.cn',
     python_requires='>=3.6',
     classifiers=[
