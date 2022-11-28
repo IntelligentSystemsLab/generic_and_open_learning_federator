@@ -12,7 +12,7 @@ To install Generic and Open Learning Federator, run this command in your termina
 
 .. code-block:: console
 
-    $ pip install generic_and_open_learning_federator
+    $ pip install golf_federated
 
 This is the preferred method to install Generic and Open Learning Federator, as it will always install the most recent stable release.
 

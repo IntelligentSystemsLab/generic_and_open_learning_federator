@@ -1,0 +1,4 @@
+numpy==1.18.5
+tensorflow==2.3.4
+sklearn==0.0
+protobuf==3.19.0

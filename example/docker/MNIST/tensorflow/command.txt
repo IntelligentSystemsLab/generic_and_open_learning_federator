@@ -1,0 +1,9 @@
+docker build -t tfmnist -f ./Dockerfile .
+
+docker run --network=bridge -p 7788:7788  -dit --name tfmnist tfmnist:latest
+
+docker exec tfmnist python train.py
+
+docker export -o image.tar tfmnist
+
+docker import -i image.tar imagetest

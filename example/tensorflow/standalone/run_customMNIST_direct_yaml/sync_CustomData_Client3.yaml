@@ -1,0 +1,59 @@
+data:
+  x_train: ['../../../data/non_iid_data_mnist_range5_label_client3/x_train_1.npy','../../../data/non_iid_data_mnist_range5_label_client3/x_train_2.npy','../../../data/non_iid_data_mnist_range5_label_client3/x_train_3.npy']
+  y_train: ['../../../data/non_iid_data_mnist_range5_label_client3/y_train_1.npy','../../../data/non_iid_data_mnist_range5_label_client3/y_train_2.npy','../../../data/non_iid_data_mnist_range5_label_client3/y_train_3.npy']
+  x_test: ['../../../data/non_iid_data_mnist_range5_label_client3/x_test_1.npy','../../../data/non_iid_data_mnist_range5_label_client3/x_test_2.npy','../../../data/non_iid_data_mnist_range5_label_client3/x_test_3.npy']
+  y_test: ['../../../data/non_iid_data_mnist_range5_label_client3/y_test_1.npy','../../../data/non_iid_data_mnist_range5_label_client3/y_test_2.npy','../../../data/non_iid_data_mnist_range5_label_client3/y_test_3.npy']
+  part_num: 3
+  client_id: ['Client1','Client2','Client3']
+  split_data: True
+
+model:
+  type: 'tensorflow'
+  filepath: '../../../module/MNIST/'
+  module: 'tfmodule'
+
+device:
+  device1:
+    type: 'server'
+    server_name: 'server1'
+    execution: 'StandAlone'
+
+  device2:
+    type: 'client'
+    client_name: 'Client1'
+    process_unit: "/cpu:0"
+    execution: 'StandAlone'
+    trainer: 'Direct'
+
+  device3:
+    type: 'client'
+    client_name: 'Client2'
+    process_unit: "/cpu:0"
+    execution: 'StandAlone'
+    trainer: 'Direct'
+
+  device4:
+    type: 'client'
+    client_name: 'Client3'
+    process_unit: "/cpu:0"
+    execution: 'StandAlone'
+    trainer: 'Direct'
+
+task:
+  task_name: 'task1'
+  task_type: 'synchronous'
+  maxround: 5
+  aggregation:
+    type: 'synchronous'
+    name: 'FedAVG'
+  evaluation:
+    type: 'classification'
+    name: 'Accuracy'
+  target: 0.9
+  select:
+    type: 'nonprobbased'
+    name: 'AllSelect'
+  process_unit: "/cpu:0"
+  isdocker: False
+  image_name: ''
+
