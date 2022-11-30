@@ -40,7 +40,7 @@ Connection and Run
 
 Set the host and port of the server in the ``MultiDeviceClient`` class,
 after the class is initialized, the connection will be established immediately,
-and the client will wait for the server to send the task.
+and the client will wait for the server to start the task.
 
 .. code-block:: python
 

@@ -19,7 +19,7 @@ Alternatively, you can clone the repository and install the package manually::
 Quick Start
 -----------
 
-Here's a quick example of how to use the package. For more details, see the Configure section.
+Here's a quick example of how to use the package. For more details, see the Configuration section.
 
 
 Configure your model
@@ -147,7 +147,7 @@ Configure and set up your server.
 Client code
 ^^^^^^^^^^^^^^^^
 
-Write some scripts to set up your client.
+Configure and set up your client.
 
 .. code-block:: python
 

@@ -5,9 +5,9 @@ Server
 Dataset
 -------
 
-You can prepare some dataset for testing the performance of the model.
+You can prepare the dataset to test the performance of the model.
 You should make your data in two ``.npy`` format files, one for the data,
-the other for the labels, both of which should be ``array-like``, in the same order.
+another for the labels, both of which should be ``array``, in the same order.
 
 Here's an example:
 
@@ -27,10 +27,7 @@ Here's an example:
 Connection
 ----------
 
-A server opens two ports, an API port and a SSE port. The SSE port is used to
-send events to the client. The API port is used to send data from the client
-to the server.
-
+A server opens two ports, an API port and a SSE port. The API port is used to send data from the client to the server. The SSE port is used to send events to the client.
 Example:
 
 .. code-block:: python
@@ -144,7 +141,7 @@ Example:
 Run
 ---
 
-After the configurations are done, you can run the server by:
+After all the configurations are done, you can run the server by:
 
 .. code-block:: python
 
@@ -165,6 +162,6 @@ After the configurations are done, you can run the server by:
     server.start_server()
     
 
-After the server is started, you can start the client to connect to the server.
-As soon as at least two clients are connected, the server will start the task,
-distribute the model to the clients, and start the training process.
+After the server is started, you can start the clients to connect to the server.
+As soon as at least two clients are connected, the server will start the task by
+distributing the model to the clients.
