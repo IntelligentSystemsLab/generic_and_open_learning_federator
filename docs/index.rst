@@ -30,10 +30,10 @@ GOLF is a possible solution for these challenges and is constantly being improve
 Feature
 ------------
 
-* GOLF provides a lightweight system construction solution that can support the implementation of FL.
-* GOLF modularizes system functions to achieve loose coupling during development and deployment, which makes the framework more generic and scalable.
-* GOLF encapsulates the code and environment required for complex and variable processes (e.g., local training and local computing) based on container technology, ensuring that the system is weakly dependent on the compilation environment to achieve portability.
-* With the characteristics of scalability, portability, and lightweight, GOLF is potentially compatible with multiple devices (e.g., Android, embedded computers, edge devices, etc.).
+* GOLF provides a lightweight solution to support the implementation of FL.
+* GOLF modularizes system functions to achieve loose coupling during system development and deployment, which makes the framework more generic and scalable.
+* GOLF uses container technology to ensure that the system is weakly dependent on the compilation environment to achieve portability.
+* GOLF is compatible with multiple devices (e.g., Android, embedded computers, edge devices, etc.).
 
 .. The remainder of this paper is organized as follows. Section 2
 .. surveys related work and summarizes them based on
