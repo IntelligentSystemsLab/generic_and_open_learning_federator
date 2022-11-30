@@ -18,11 +18,11 @@ in different scenarios.
 For FL frameworks, the following five aspects summarize the
 challenges in their design, implementation, and other processes:
 
-* Aggregation Algorithm: Most existing frameworks only support synchronous FL, but asynchronous FL is more suitable for practical applications.
-* Device Compatibility: The system framework of FL needs to be capable of deploying on various devices and performing on-device computing, especially for edge devices.
-* API Design: Generic calls and flexible expansion of APIs are the essential requirements for an efficient and scalable system.
-* System Configuration: Users and developers prefer out-of-the-box system frameworks with reproducible environments.
-* System Application: The system should provide specific service customization and not restrict application scenarios.
+* Aggregation Algorithm: Most existing frameworks only support synchronous FL, but asynchronous FL is more suitable for applications with heterogeneous learning participants.
+* Device Compatibility: FL framework needs to be capable of hosting various devices, especially edge devices, and performing on-device computing.
+* API Design: Generic calls and flexible expansion of APIs are the essential requirements for an efficient and scalable FL framework.
+* System Configuration: Users and developers prefer out-of-the-box system frameworks with reproducible procedures.
+* System Application: The system should provide service customization to support various application scenarios.
 
 GOLF is a possible solution for these challenges and is constantly being improved. You can get a quick start with :doc:`start`.
 
