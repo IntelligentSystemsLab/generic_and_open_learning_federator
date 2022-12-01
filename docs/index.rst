@@ -52,8 +52,8 @@ Indices and Tables
 * :ref:`modindex`
 * :ref:`search`
 
-Collaborators
-==================
+.. Collaborators
+.. ==================
 
 |islab| |jysw| |mit| |sutd| |sysu|
 
