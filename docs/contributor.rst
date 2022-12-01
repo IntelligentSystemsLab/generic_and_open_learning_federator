@@ -16,11 +16,11 @@ Collaborators
     :height: 70px
     :width: 70px
 
-.. |jysw| image:: ./source/jysw.png
+.. |jysw| image:: ./source/jyswlogo.png
     :height: 70px
     :width: 70px
 
-.. |mit| image:: ./source/mit.png
+.. |mit| image:: ./source/mitlogo.png
     :height: 70px
     :width: 70px
 
