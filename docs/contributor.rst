@@ -14,21 +14,21 @@ Collaborators
 
 .. |islab| image:: ./source/islab.png
     :height: 70px
-    :weight: 70px
+    :width: 70px
 
 .. |jysw| image:: ./source/jysw.jpg
     :height: 70px
-    :weight: 70px
+    :width: 70px
 
 .. |mit| image:: ./source/MIT.png
     :height: 70px
-    :weight: 70px
+    :width: 70px
 
 .. |sutd| image:: ./source/sutd.png
     :height: 70px
-    :weight: 70px
+    :width: 70px
     
 .. |sysu| image:: ./source/sysu.jpg
     :height: 70px
-    :weight: 70px
+    :width: 70px
 
