@@ -7,23 +7,23 @@ Development Lead
 * `MatZaharia <https://github.com/MatZaharia>`_
 * `backto2020 <https://github.com/backto2020>`_
 
-Collaborator
-------------
+Collaborators
+-------------
 
 |islab| |jysw| |mit| |sutd| |sysu|
 
 .. |islab| image:: ./source/islab.svg
-    :height: 0.97222in
-    
+    :height: 100px
+
 .. |jysw| image:: ./source/jysw.jpg
-    :height: 0.97222in
+    :height: 100px
 
 .. |mit| image:: ./source/MIT.png
-    :height: 0.97222in
+    :height: 100px
 
 .. |sutd| image:: ./source/sutd.png
-    :height: 0.97222in
+    :height: 100px
     
 .. |sysu| image:: ./source/sysu.svg
-    :height: 0.97222in
+    :height: 100px
 
