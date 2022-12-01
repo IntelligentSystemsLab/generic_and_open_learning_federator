@@ -20,11 +20,11 @@ Collaborators
     :height: 70px
     :width: 70px
 
-.. |mit| image:: ./source/MIT.png
+.. |mit| image:: ./source/mit.png
     :height: 70px
     :width: 70px
 
-.. |sutd| image:: ./source/sutd.png
+.. |sutd| image:: ./source/sutd.jpg
     :height: 70px
     :width: 70px
     
