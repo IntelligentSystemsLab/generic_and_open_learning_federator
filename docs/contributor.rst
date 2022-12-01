@@ -12,7 +12,7 @@ Collaborators
 
 |islab| |jysw| |mit| |sutd| |sysu|
 
-.. |islab| image:: ./source/is-lab.png
+.. |islab| image:: ./source/islab.png
     :height: 70px
     :width: 70px
 
