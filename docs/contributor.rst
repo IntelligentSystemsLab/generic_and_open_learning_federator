@@ -12,7 +12,7 @@ Collaborators
 
 |islab| |jysw| |mit| |sutd| |sysu|
 
-.. |islab| image:: ./source/islab.svg
+.. |islab| image:: ./source/islab.png
     :height: 400
 
 .. |jysw| image:: ./source/jysw.jpg
@@ -24,6 +24,6 @@ Collaborators
 .. |sutd| image:: ./source/sutd.png
     :height: 400
     
-.. |sysu| image:: ./source/sysu.svg
+.. |sysu| image:: ./source/sysu.jpg
     :height: 400
 
