@@ -13,17 +13,17 @@ Collaborators
 |islab| |jysw| |mit| |sutd| |sysu|
 
 .. |islab| image:: ./source/islab.png
-    :height: 100px
+    :height: 50px
 
 .. |jysw| image:: ./source/jysw.jpg
-    :height: 100px
+    :height: 50px
 
 .. |mit| image:: ./source/MIT.png
-    :height: 100px
+    :height: 50px
 
 .. |sutd| image:: ./source/sutd.png
-    :height: 100px
+    :height: 50px
     
 .. |sysu| image:: ./source/sysu.jpg
-    :height: 100px
+    :height: 50px
 
