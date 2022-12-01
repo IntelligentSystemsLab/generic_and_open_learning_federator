@@ -35,41 +35,6 @@ Feature
 * GOLF uses container technology to ensure that the system is weakly dependent on the compilation environment to achieve portability.
 * GOLF is compatible with multiple devices (e.g., Android, embedded computers, edge devices, etc.).
 
-.. The remainder of this paper is organized as follows. Section 2
-.. surveys related work and summarizes them based on
-.. the above challenges. Section 3 introduces the design and
-.. implementation of GOLF. Section 4 performs some experiments
-.. based on GOLF. Section 5 draws a conclusion and outlines
-.. future work.
-
-.. +-----------------------+---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |        Category       |    Specific Issue   | Fate | PySyft | APPFL | OpenFed | OpenFL | FLOWER | FEDLAB | TFF | PFL | FEDn | FedML | GOLF |
-.. +=======================+=====================+======+========+=======+=========+========+========+========+=====+=====+======+=======+======+
-.. | Aggregation Algorithm |     Synchronous     |   ✓  |    ✓   |   ✓   |    ✓    |    ✓   |    ✓   |    ✓   |  ✓  |  ✓  |   ✓  |   ✓   |   ✓  |
-.. |                       +---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |                       |     Asynchronous    |   ✓  |    ✓   |       |         |        |    ✓   |    ✓   |     |     |      |       |   ✓  |
-.. +-----------------------+---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |  Device Compatibility |   Device Diversity  |   ✓  |        |       |         |        |        |        |     |  ✓  |   ✓  |   ✓   |   ✓  |
-.. |                       +---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |                       | On-device Computing |      |        |       |         |        |    ✓   |        |     |     |      |   ✓   |   ✓  |
-.. +-----------------------+---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |       API Design      |     Generic Call    |      |        |   ✓   |         |        |    ✓   |        |     |     |   ✓  |   ✓   |   ✓  |
-.. |                       +---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |                       |  Flexible Expansion |      |        |   ✓   |    ✓    |        |    ✓   |    ✓   |     |     |   ✓  |   ✓   |   ✓  |
-.. +-----------------------+---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |  System Configuration |    Out of the box   |      |    ✓   |   ✓   |    ✓    |    ✓   |        |    ✓   |  ✓  |     |   ✓  |       |   ✓  |
-.. |                       +---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |                       |     Reproducible    |      |    ✓   |       |         |        |        |        |     |     |   ✓  |       |   ✓  |
-.. |                       |     Environments    |      |        |       |         |        |        |        |     |     |      |       |      |
-.. +-----------------------+---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |   System Application  |     Unrestricted    |   ✓  |        |       |    ✓    |        |    ✓   |    ✓   |     |  ✓  |   ✓  |   ✓   |   ✓  |
-.. |                       |      Scenarios      |      |        |       |         |        |        |        |     |     |      |       |      |
-.. |                       +---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-.. |                       |       Service       |      |        |       |         |        |        |    ✓   |     |     |      |       |   ✓  |
-.. |                       |    Customization    |      |        |       |         |        |        |        |     |     |      |       |      |
-.. +-----------------------+---------------------+------+--------+-------+---------+--------+--------+--------+-----+-----+------+-------+------+
-
-
 .. toctree::
    :maxdepth: 2
    :caption: Outline
@@ -77,6 +42,7 @@ Feature
    start
    configuration
    api
+   contributor
 
 
 Indices and Tables
@@ -85,3 +51,4 @@ Indices and Tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
