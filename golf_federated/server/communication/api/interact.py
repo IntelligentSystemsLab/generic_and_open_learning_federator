@@ -13,7 +13,7 @@ from golf_federated.utils.log import loggerhear
 def client_register(serverhere) -> str:
     """
 
-    Client register download method for API.
+    Client registration download method for API.
 
     Args:
         serverhere (golf_federated.server.process.config.device.base.MultiDeviceServer): Server object.

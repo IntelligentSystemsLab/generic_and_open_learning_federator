@@ -1,0 +1,53 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="10">
+            <item index="0" class="java.lang.String" itemvalue="tensorflow" />
+            <item index="1" class="java.lang.String" itemvalue="keras" />
+            <item index="2" class="java.lang.String" itemvalue="numpy" />
+            <item index="3" class="java.lang.String" itemvalue="flask" />
+            <item index="4" class="java.lang.String" itemvalue="sseclient" />
+            <item index="5" class="java.lang.String" itemvalue="redis" />
+            <item index="6" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="7" class="java.lang.String" itemvalue="pycryptodome" />
+            <item index="8" class="java.lang.String" itemvalue="jinja2" />
+            <item index="9" class="java.lang.String" itemvalue="werkzeug" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E721" />
+          <option value="E203" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="main.PySide5" />
+          <option value="server.api.golf_federated" />
+          <option value="run_server_example.golf_federated" />
+          <option value="object.model" />
+          <option value="object.optimizer" />
+          <option value="object.loss" />
+          <option value="object.batch_size" />
+          <option value="object.library" />
+          <option value="object.train_epoch" />
+          <option value="golf_federated.server.process.config.model.tensorflow.device" />
+          <option value="object.metrics" />
+          <option value="numpy.ndarray.to" />
+          <option value="object.torch_dataset" />
+          <option value="_importlib_modulespec.ModuleType.library" />
+          <option value="module" />
+          <option value="tfmodule" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

@@ -17,7 +17,7 @@ def client_register(
 ) -> bytes:
     """
 
-    Client registers.
+    Client registration.
 
     Args:
         host (str): Host name to connect to the host.
