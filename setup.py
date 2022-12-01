@@ -41,4 +41,5 @@ setup(
     url='https://github.com/MatZaharia/generic_and_open_learning_federator',
     version='0.1.0',
     zip_safe=False,
+    
 )
