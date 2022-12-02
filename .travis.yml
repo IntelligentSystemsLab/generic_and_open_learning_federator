@@ -21,7 +21,7 @@ deploy:
   distributions: sdist bdist_wheel
   user: MatZaharia
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: "CXTt3OkyrfSEmD91gDMAGs5qp5vPJzNuQbzC2H33tBdw0N8qA1GMjhPdnQPq/Sln6Ao3u3owRcHkTMJ/WTQ0lAouhs0LzxNA0l6abw2hkH2OKzBu7W/bBOeQNvhac/c4PLSBiqt32WO+j4Huu+hO/D4I0CnjPahNF+GfmIayuwoKQ7XLZsxpdLYJjTBUr/Tns9ndZtJp+V9sqwWgnR7q4GUZHAkjtekIJYQXnfHH3oRdeqmGquOLZGzmEgVRR2ZDgzyHORdKQ57XphBIEUglzRdbqVgrj/K3T+Z/SZHIKAsaNay8WcgmV49PUsNxPK+do0xS7F3BwYWF9ZKNyM0VcFrMDXZjamSHlnZJwpBoHS8ePPvZ+GGcpNCn06Mw5Ne7sc8f1qHQgvGlVw+3Or/nH+MdXRdU6O2pdmUaW3MseiExUOHj5rgfk2psmB4bq+d4Bzk6MWne1kmoaB3+0zQuctcHLg9X6XFiLahrGbwbig2xx0aQsdN6xtDnbgOsGZNjW+eh8Fi8e6P9Uv/w2Pgi2AgaDYYQyao+kDtuMn58fDA3OZCCAj/Sa4HCotWEnPTNA3HUxMJTuJ22fBq1G6jkNuv3I/1x3MHymrX4KxHqxJ2AuQzWK0luHsyCN3oh33cQscRPFG5Huwm+3Hfg2SjTFVRvUKij+xPqz5CR7YNlqwg="
   on:
     tags: true
     repo: MatZaharia/generic_and_open_learning_federator
