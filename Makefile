@@ -57,6 +57,7 @@ test: ## run tests quickly with the default Python
 
 test-all: ## run tests on every Python version with tox
 	tox
+# 	python setup.py test
 
 coverage: ## check code coverage quickly with the default Python
 	coverage run --source generic_and_open_learning_federator setup.py test
