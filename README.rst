@@ -3,7 +3,7 @@ Generic and Open Learning Federator
 ===================================
 
 
-.. image:: https://img.shields.io/pypi/v/generic_and_open_learning_federator.svg
+.. image:: https://img.shields.io/pypi/v/golf_federated.svg
         :target: https://pypi.python.org/pypi/golf_federated
 
 .. image:: https://img.shields.io/travis/MatZaharia/generic_and_open_learning_federator.svg
