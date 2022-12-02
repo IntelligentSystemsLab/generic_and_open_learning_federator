@@ -36,7 +36,7 @@ setup(
     keywords='golf_federated',
     name='golf_federated',
     packages=find_packages(include=['golf_federated', 'golf_federated.*']),
-    test_suite='example',
+    test_suite='example.tensorflow.standalone.run_customMNIST_direct.sync_CustomData_Client3.py',
     tests_require=test_requirements,
     url='https://github.com/MatZaharia/generic_and_open_learning_federator',
     version='0.1.0',
