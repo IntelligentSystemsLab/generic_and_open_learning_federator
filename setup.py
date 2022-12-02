@@ -12,7 +12,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [ ]
 
-test_requirements = [ ]
+test_requirements = [ "tensorflow==2.3.4" , "torch==1.8.1" ]
 
 setup(
     author="MatZaharia",
