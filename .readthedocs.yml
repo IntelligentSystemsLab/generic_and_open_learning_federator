@@ -13,6 +13,6 @@ sphinx:
 python:
    install:
      - method: pip
-       path: .
+       path: golf_federated/
      - requirements: requirements_dev.txt
      - requirements: docs/requirements_dev.txt

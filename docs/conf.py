@@ -12,7 +12,7 @@
 #
 # import os
 # import sys
-# sys.path.insert(0, 'D:\\坚果云\\我的坚果云\\MyGit\\GOLF_Beta\\golf_federated')
+# sys.path.insert(0, 'D:\\坚果云\\我的坚果云\\MyGit\\generic-and-open-learning-federator\\golf_federated')
 
 
 # -- Project information -----------------------------------------------------
