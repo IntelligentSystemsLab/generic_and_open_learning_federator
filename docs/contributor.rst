@@ -15,7 +15,9 @@ Collaborators
 -------------
 
 |sysu|
+
 |islab| |jysw|
+
 |mit| |sutd| 
 
 .. |islab| image:: ./source/is-lab.png

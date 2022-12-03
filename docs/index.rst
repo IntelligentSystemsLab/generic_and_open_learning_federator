@@ -56,7 +56,9 @@ Indices and Tables
 .. ==================
 
 |sysu|
+
 |islab| |jysw|
+
 |mit| |sutd| 
 
 .. |islab| image:: ./source/is-lab.png
@@ -67,7 +69,7 @@ Indices and Tables
     :height: 100px
     :width: 100px
 
-.. |mit| image:: ./source/mitlogo.png
+.. |mit| image:: ./source/mit.png
     :height: 100px
     :width: 100px
 
