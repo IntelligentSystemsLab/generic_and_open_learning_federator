@@ -5,7 +5,7 @@ golf\_federated.server.process.config.task package
 golf\_federated.server.process.config.task.asynchronous module
 --------------------------------------------------------------
 
-.. automodule:: golf_federated.server.process.config.task.asynchronous
+.. automodapi:: golf_federated.server.process.config.task.asynchronous
    :members:
    :undoc-members:
    :show-inheritance:
@@ -13,7 +13,7 @@ golf\_federated.server.process.config.task.asynchronous module
 golf\_federated.server.process.config.task.base module
 ------------------------------------------------------
 
-.. automodule:: golf_federated.server.process.config.task.base
+.. automodapi:: golf_federated.server.process.config.task.base
    :members:
    :undoc-members:
    :show-inheritance:
@@ -21,7 +21,7 @@ golf\_federated.server.process.config.task.base module
 golf\_federated.server.process.config.task.synchronous module
 -------------------------------------------------------------
 
-.. automodule:: golf_federated.server.process.config.task.synchronous
+.. automodapi:: golf_federated.server.process.config.task.synchronous
    :members:
    :undoc-members:
    :show-inheritance:
