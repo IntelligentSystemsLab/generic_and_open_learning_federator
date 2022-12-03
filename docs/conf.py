@@ -46,8 +46,9 @@ language = 'en'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-# exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','sphinx_automodule.automodule']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','sphinxcontrib.autodoc_pydantic']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','sphinx.ext.autodoc','readthedocs_ext.readthedocs','sphinx.ext.viewcode', 'sphinx.ext.todo',    'sphinx_toolbox.more_autodoc',]
+# # exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','sphinx_automodule.automodule']
+# exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','sphinxcontrib.autodoc_pydantic']
 
 
 # -- Options for HTML output -------------------------------------------------
