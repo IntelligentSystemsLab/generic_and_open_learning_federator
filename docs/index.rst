@@ -18,11 +18,11 @@ in different scenarios.
 For FL frameworks, the following five aspects summarize the
 challenges in their design, implementation, and other processes:
 
-* Aggregation Algorithm: Most existing frameworks only support synchronous FL, but asynchronous FL is more suitable for applications with heterogeneous learning participants.
-* Device Compatibility: FL framework needs to be capable of hosting various devices, especially edge devices, and performing on-device computing.
-* API Design: Generic calls and flexible expansion of APIs are the essential requirements for an efficient and scalable FL framework.
-* System Configuration: Users and developers prefer out-of-the-box system frameworks with reproducible procedures.
-* System Application: The system should provide service customization to support various application scenarios.
+* 1) **Aggregation Algorithm**: Most existing frameworks only support synchronous FL, but asynchronous FL is more suitable for applications with heterogeneous learning participants.
+* 2) **Device Compatibility**: FL framework needs to be capable of hosting various devices, especially edge devices, and performing on-device computing.
+* 3) **API Design**: Generic calls and flexible expansion of APIs are the essential requirements for an efficient and scalable FL framework.
+* 4) **System Configuration**: Users and developers prefer out-of-the-box system frameworks with reproducible procedures.
+* 5) **System Application**: The system should provide service customization to support various application scenarios.
 
 GOLF is a possible solution for these challenges and is constantly being improved. You can get a quick start with :doc:`start`.
 
@@ -30,10 +30,10 @@ GOLF is a possible solution for these challenges and is constantly being improve
 Feature
 ------------
 
-* GOLF provides a lightweight solution to support the implementation of FL.
-* GOLF modularizes system functions to achieve loose coupling during system development and deployment, which makes the framework more generic and scalable.
-* GOLF uses container technology to ensure that the system is weakly dependent on the compilation environment to achieve portability.
-* GOLF is compatible with multiple devices (e.g., Android, embedded computers, edge devices, etc.).
+* 1) GOLF provides a lightweight solution to support the implementation of FL.
+* 2) GOLF modularizes system functions to achieve loose coupling during system development and deployment, which makes the framework more generic and scalable.
+* 3) GOLF uses container technology to ensure that the system is weakly dependent on the compilation environment to achieve portability.
+* 4) GOLF is compatible with multiple devices (e.g., Android, embedded computers, edge devices, etc.).
 
 .. toctree::
    :maxdepth: 2
