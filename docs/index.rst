@@ -55,7 +55,9 @@ Indices and Tables
 .. Collaborators
 .. ==================
 
-|islab| |jysw| |mit| |sutd| |sysu|
+|sysu|
+|islab| |jysw|
+|mit| |sutd| 
 
 .. |islab| image:: ./source/is-lab.png
     :height: 100px

@@ -14,7 +14,9 @@ Development Lead
 Collaborators
 -------------
 
-|islab| |jysw| |mit| |sutd| |sysu|
+|sysu|
+|islab| |jysw|
+|mit| |sutd| 
 
 .. |islab| image:: ./source/is-lab.png
     :height: 100px
@@ -24,7 +26,7 @@ Collaborators
     :height: 100px
     :width: 100px
 
-.. |mit| image:: ./source/mitlogo.png
+.. |mit| image:: ./source/mit.png
     :height: 100px
     :width: 100px
 
