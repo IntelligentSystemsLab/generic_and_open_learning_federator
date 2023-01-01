@@ -33,7 +33,7 @@ def create_cnn_for_fmnist():
         ]
     )
 
-model = 'create_cnn_for_mnist'
+model = 'create_cnn_for_fmnist'
 optimizer = tf.keras.optimizers.SGD(learning_rate=0.005)
 loss = tf.keras.losses.CategoricalCrossentropy()
 batch_size = 128
