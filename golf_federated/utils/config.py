@@ -44,15 +44,21 @@ def load_yaml_config(file: str) -> None:
     task_content = content['task']
 
     # Create a federated dataset object.
-    fl_data = CustomFederatedDataset(
-        train_data=data_content['x_train'],
-        train_label=data_content['y_train'],
-        test_data=data_content['x_test'],
-        test_label=data_content['y_test'],
-        part_num=data_content['part_num'],
-        part_id=data_content['client_id'],
-        split_data=data_content['split_data'],
-    )
+    if len(data_content)==2:
+        fl_data = CustomFederatedDataset(
+            test_data=data_content['x_test'],
+            test_label=data_content['y_test'],
+        )
+    else:
+        fl_data = CustomFederatedDataset(
+            train_data=data_content['x_train'],
+            train_label=data_content['y_train'],
+            test_data=data_content['x_test'],
+            test_label=data_content['y_test'],
+            part_num=data_content['part_num'],
+            part_id=data_content['client_id'],
+            split_data=data_content['split_data'],
+        )
 
     # Judge whether a server or clients are there.
     have_server = False
@@ -193,7 +199,7 @@ def load_yaml_config(file: str) -> None:
                 select=getattr(getattr(golf_federated.server.process.strategy.selection, select['type']),
                                select['name'])(
                     client_list=client_list,
-                    select_num=len(client_list)
+                    select_num=select['amount']
                 ),
                 module_path=model_content['filepath'] + model_content['module'] + '.py',
                 isdocker=task_content['isdocker'],
@@ -219,7 +225,7 @@ def load_yaml_config(file: str) -> None:
                 select=getattr(getattr(golf_federated.server.process.strategy.selection, select['type']),
                                select['name'])(
                     client_list=client_list,
-                    select_num=len(client_list)
+                    select_num=select['amount']
                 ),
                 timing=task_content['timing'],
                 module_path=model_content['filepath'] + model_content['module'] + '.py',
@@ -246,7 +252,7 @@ def load_yaml_config(file: str) -> None:
                 select=getattr(getattr(golf_federated.server.process.strategy.selection, select['type']),
                                select['name'])(
                     client_list=client_list,
-                    select_num=len(client_list)
+                    select_num=select['amount']
                 ),
                 ration=task_content['ration'],
                 module_path=model_content['filepath'] + model_content['module'] + '.py',
