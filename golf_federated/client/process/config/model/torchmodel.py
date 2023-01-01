@@ -22,11 +22,11 @@ class TorchModel(BaseModel):
     """
 
     def __init__(
-            self,
-            module: object,
-            train_data: ndarray,
-            train_label: ndarray,
-            process_unit: str = "cpu"
+        self,
+        module: object,
+        train_data: ndarray,
+        train_label: ndarray,
+        process_unit: str = "cpu"
     ) -> None:
         """
 
@@ -42,6 +42,7 @@ class TorchModel(BaseModel):
 
         # Super class init.
         super().__init__(module, train_data, train_label, process_unit)
+        self.optimizer = module.optimizer(self.model.parameters(), lr=module.learning_rate)
 
         # Initialize object properties.
         if train_data.shape[-1] == 1:
@@ -90,8 +91,8 @@ class TorchModel(BaseModel):
                 epoch, self.train_epoch, training_loss / training_count, training_acc / training_total * 100))
 
     def predict(
-            self,
-            data: ndarray
+        self,
+        data: ndarray
     ) -> ndarray:
         """
 
