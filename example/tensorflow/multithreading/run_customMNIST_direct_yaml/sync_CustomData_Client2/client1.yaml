@@ -1,0 +1,18 @@
+data:
+  x_train: ['../../../../data/non_iid_data_mnist_range5_label_client3/x_train_1.npy']
+  y_train: ['../../../../data/non_iid_data_mnist_range5_label_client3/y_train_1.npy']
+  x_test: ['../../../../data/non_iid_data_mnist_range5_label_client3/x_test_1.npy']
+  y_test: ['../../../../data/non_iid_data_mnist_range5_label_client3/y_test_1.npy']
+  part_num: 1
+  client_id: ['Client1']
+  split_data: True
+
+device:
+  device1:
+    type: 'client'
+    client_name: 'Client1'
+    process_unit: "/cpu:0"
+    execution: 'MultiDevice'
+    trainer: 'Direct'
+    api_host: '127.0.0.1'
+    api_port: '7788'
