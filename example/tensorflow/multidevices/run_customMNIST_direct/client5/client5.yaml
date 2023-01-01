@@ -1,0 +1,18 @@
+data:
+  x_train: ['./data/x_train_5.npy']
+  y_train: ['./data/y_train_5.npy']
+  x_test: ['./data/x_test_5.npy']
+  y_test: ['./data/y_test_5.npy']
+  part_num: 1
+  client_id: ['Client5']
+  split_data: True
+
+device:
+  device1:
+    type: 'client'
+    client_name: 'Client5'
+    process_unit: "/cpu:0"
+    execution: 'MultiDevice'
+    trainer: 'Direct'
+    api_host: '172.25.151.114'
+    api_port: '7788'
