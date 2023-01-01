@@ -38,5 +38,4 @@ if __name__ == '__main__':
         api_port='7788',
         train_data=data_client_n[0],
         train_label=data_client_n[1],
-        docker_port='7790'
     )
