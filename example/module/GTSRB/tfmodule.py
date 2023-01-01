@@ -8,7 +8,7 @@
 import tensorflow as tf
 from tensorflow.keras.regularizers import l2
 
-def create_cnn_for_germants():
+def create_cnn_for_gtsrb():
     return tf.keras.Sequential(
         [
             tf.keras.layers.Conv2D(
@@ -48,7 +48,7 @@ def create_cnn_for_germants():
     )
 
 
-model = 'create_cnn_for_mnist'
+model = 'create_cnn_for_gtsrb'
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.00075)
 loss = tf.keras.losses.CategoricalCrossentropy()
 batch_size = 128
