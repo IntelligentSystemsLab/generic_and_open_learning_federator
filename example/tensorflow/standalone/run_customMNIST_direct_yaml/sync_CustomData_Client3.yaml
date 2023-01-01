@@ -53,6 +53,7 @@ task:
   select:
     type: 'nonprobbased'
     name: 'AllSelect'
+    amount: 3
   process_unit: "/cpu:0"
   isdocker: False
   image_name: ''
