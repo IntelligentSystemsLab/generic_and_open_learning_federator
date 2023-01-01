@@ -42,7 +42,7 @@ def create_cnn_for_cifar10():
 
 
 
-model = 'create_cnn_for_mnist'
+model = 'create_cnn_for_cifar10'
 optimizer = tf.keras.optimizers.Adam(learning_rate=0.00005)
 loss = tf.keras.losses.CategoricalCrossentropy()
 batch_size = 128
