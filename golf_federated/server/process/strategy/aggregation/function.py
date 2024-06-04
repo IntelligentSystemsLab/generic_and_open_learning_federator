@@ -4,7 +4,7 @@
 # @Email              : guozh29@mail2.sysu.edu.cn
 # @Last Modified By   : GZH
 # @Last Modified Time : 2022/11/3 12:43
-
+from copy import deepcopy
 from typing import Callable
 import numpy as np
 import math
@@ -13,8 +13,8 @@ from golf_federated.utils.data import deepcopy_list
 
 
 def fedavg(
-        weight: list,
-        data_size: list
+    weight: list,
+    data_size: list
 ) -> list:
     """
 
@@ -44,10 +44,10 @@ def fedavg(
 
 
 def fedfd(
-        client_id: list,
-        weight: dict,
-        client_round: dict,
-        version_latest: int,
+    client_id: list,
+    weight: dict,
+    client_round: dict,
+    version_latest: int,
 ) -> list:
     """
 
@@ -82,14 +82,14 @@ def fedfd(
 
 
 def fedasync(
-        client_id: list,
-        weight: dict,
-        staleness: str,
-        current_weight: list,
-        current_round: int,
-        client_round: dict,
-        alpha: float,
-        beta: float
+    client_id: list,
+    weight: dict,
+    staleness: str,
+    current_weight: list,
+    current_round: int,
+    client_round: dict,
+    alpha: float,
+    beta: float
 ) -> list:
     """
 
@@ -151,9 +151,9 @@ def fedasync(
 
 
 def SLMFedsyn(
-        weight: list,
-        aggregate_percentage: list,
-        current_weight: list
+    weight: list,
+    aggregate_percentage: list,
+    current_weight: list
 ) -> list:
     """
 
@@ -203,13 +203,13 @@ def SLMFedsyn(
 
 
 def SLMFedasyn(
-        client_id: list,
-        weight: dict,
-        aggregate_percentage: dict,
-        current_weight: list,
-        current_acc: float,
-        target_acc: float,
-        func: str
+    client_id: list,
+    weight: dict,
+    aggregate_percentage: dict,
+    current_weight: list,
+    current_acc: float,
+    target_acc: float,
+    func: str
 ) -> list:
     """
 
@@ -274,10 +274,10 @@ def SLMFedasyn(
 
 
 def fedprox_loss(
-        model_library: str,
-        w_global: list,
-        w_local: list,
-        miu: float = 1
+    model_library: str,
+    w_global: list,
+    w_local: list,
+    miu: float = 1
 ) -> Callable:
     """
 
@@ -304,3 +304,130 @@ def fedprox_loss(
             return sparse_categorical_crossentropy(y_true, y_pred) + miu / 2 * proximal_term
 
     return loss
+
+
+def mean2(x):
+    import torch
+    y = torch.sum(x) / len(x)
+    return y
+
+
+def corr2(a, b):
+    a = a - mean2(a)
+    b = b - mean2(b)
+    import torch
+    r = torch.sum(a * b) / torch.sqrt(torch.sum(a * a) * torch.sum(b * b))
+    return r
+
+
+def Cedarsyn(
+    local_model: list,
+    detect: bool,
+    current_model: list,
+    NUM_LAYER,
+    layer_weight,
+    stimulus_x,
+    require_judge_layer,
+    upgrade_bool_list,
+) -> list:
+    """
+
+    Args:
+        weight (list): List of client model parameters for aggregation.
+        aggregate_percentage (list): Aggregate weights for each client.
+        current_weight (list): Current global model parameters.
+
+    Returns:
+        List: The model generated after aggregation. And use a list to store the parameters of different layers.
+
+    """
+
+    import torch
+    from torch.autograd import Variable
+
+    require_fill_layer = []
+    for i in range(NUM_LAYER):
+        if layer_weight[i] == 'inf':
+            require_fill_layer.append(require_judge_layer[i])
+
+    global_model_copy = deepcopy(current_model)
+
+    aggregate_percentage = []
+
+    RS = np.zeros([1, len(local_model)])
+    from torch.nn import functional as F
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    for i_local_model in range(len(local_model)):
+        stimulus_num = 10
+        temp_model1 = deepcopy(local_model[i_local_model])
+        temp_model2 = deepcopy(current_model)
+        model1_out = temp_model1(stimulus_x)
+        model2_out = temp_model2(stimulus_x)
+        model1_softmax = torch.tensor(F.softmax(model1_out, dim=1), dtype=torch.float32)
+        model2_softmax = torch.tensor(F.softmax(model2_out, dim=1), dtype=torch.float32)
+        model1_RDM = torch.zeros((stimulus_num, stimulus_num)).to(device)
+        model2_RDM = torch.zeros((stimulus_num, stimulus_num)).to(device)
+
+        for i in range(stimulus_num):
+            for j in range(stimulus_num):
+                temp_a = model1_softmax[i]
+                temp_c = temp_a.view(1, -1)
+                temp_b = model1_softmax[j]
+                temp_d = temp_b.view(1, -1)
+                model1_RDM[i][j] = torch.cosine_similarity(temp_c, temp_d)
+                model2_RDM[i][j] = torch.cosine_similarity(model2_softmax[i].view(1, -1), model2_softmax[j].view(1, -1))
+        corr_result = corr2(model1_RDM, model2_RDM)
+        RS[0][i_local_model] = corr_result
+        aggregate_percentage.append(float(corr_result))
+    if detect:
+        RS = (RS - RS.min()) / (RS.max() - RS.min())
+        from sklearn.cluster import KMeans
+        cluster = KMeans(n_clusters=2)
+        cluster_result = cluster.fit(RS.reshape(-1, 1)).labels_
+        from collections import Counter
+        cluster_benign = Counter(cluster_result).most_common(1)[0][0]
+        id_train = []
+        for i in range(len(local_model)):
+            if cluster_result[i] == cluster_benign:
+                id_train.append(i)
+                aggregate_percentage[i] = 0
+    min_aggregate_percentage = min(aggregate_percentage)
+    max_aggregate_percentage = max(aggregate_percentage)
+    for a in range(len(aggregate_percentage)):
+        aggregate_percentage[a] = (aggregate_percentage[a] - min_aggregate_percentage) / (
+            max_aggregate_percentage - min_aggregate_percentage)
+    aggregate_percentage = np.array(aggregate_percentage)
+
+    for j in range(len(local_model)):
+        for global_w, client_w in zip(current_model.named_parameters(), local_model[j].named_parameters()):
+            global_name, global_param = global_w
+            client_name, client_param = client_w
+            for layer in require_judge_layer:
+                if global_name.__contains__(layer):
+                    judge_sign = 1
+                    break
+                else:
+                    judge_sign = 0
+            if judge_sign == 0:
+                if (global_param is None or id == 0):
+                    param_tem = Variable(torch.zeros_like(global_param))
+                    global_param.data.copy_(param_tem.data)
+                global_param.data.add_(client_param.data * aggregate_percentage[j])
+            else:
+                if (global_param is None or id == 0):
+                    param_tem = Variable(torch.zeros_like(global_param))
+                    global_param.data.copy_(param_tem.data)
+                for layer in require_judge_layer:
+
+                    if global_name.__contains__(layer):
+                        idx = list(require_judge_layer).index(layer)
+                if upgrade_bool_list[j][idx] == 1:
+                    global_param.data.add_(client_param.data * layer_weight[idx])
+    for layer in require_fill_layer:
+        for global_w, global_copy in zip(current_model.named_parameters(), global_model_copy.named_parameters()):
+            global_name, global_param = global_w
+            global_copy_name, global_copy_param = global_copy
+            if global_name.__contains__(layer):
+                global_param.data.add_(global_copy_param.data * 1)
+
+    return current_model

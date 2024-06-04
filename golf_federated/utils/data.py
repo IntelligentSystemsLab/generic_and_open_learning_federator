@@ -6,8 +6,9 @@
 # @Last Modified Time : 2022/10/27 0:15
 
 import os
+import random
 from collections import Counter
-from typing import Any,Tuple
+from typing import Any, Tuple
 import h5py
 import numpy as np
 from numpy import ndarray
@@ -17,13 +18,13 @@ from golf_federated.utils.log import loggerhear
 
 
 def generate_fl_data(
-        train_data: list,
-        train_label: list,
-        test_data: list,
-        test_label: list,
-        part_num: int,
-        part_id: list = [],
-        split_data: bool = False,
+    train_data: list,
+    train_label: list,
+    test_data: list,
+    test_label: list,
+    part_num: int,
+    part_id: list = [],
+    split_data: bool = False,
 ) -> dict:
     """
 
@@ -49,7 +50,7 @@ def generate_fl_data(
 
     # Judge whether the values and labels of train and evaluation data correspond to each other.
     if load_file_list(train_data)['shape'] != load_file_list(train_label)['shape'] \
-            or load_file_list(test_data)['shape'] != load_file_list(test_label)['shape']:
+        or load_file_list(test_data)['shape'] != load_file_list(test_label)['shape']:
         # If one of them does not correspond, output the log and terminate the program.
         loggerhear.log("Error Message", 'You read data and labels with mismatched sizes.' +
                        '\n     Train data has sizes of ' +
@@ -122,17 +123,17 @@ def generate_fl_data(
         # Organized into a dictionary.
         return_dict = {
             'trainPart': part_data,
-            'testX': x_merge_test,
-            'testY': y_merge_test
+            'testX'    : x_merge_test,
+            'testY'    : y_merge_test
         }
 
         return return_dict
 
 
 def split_to_num(
-        x: ndarray,
-        y: ndarray,
-        to_num: int,
+    x: ndarray,
+    y: ndarray,
+    to_num: int,
 ) -> dict:
     """
 
@@ -210,10 +211,10 @@ def merge_data(data_list: list):
 
 
 def match_id_data(
-        x: ndarray,
-        y: ndarray,
-        part_id: list,
-        part_num: int
+    x: ndarray,
+    y: ndarray,
+    part_id: list,
+    part_num: int
 ) -> dict:
     """
 
@@ -275,7 +276,7 @@ def load_file_list(filelist: list) -> dict:
 
     # Data is represented by a dictionary.
     return_dict = {
-        'data': data_list,
+        'data' : data_list,
         'shape': data_shape_list
     }
 
@@ -502,6 +503,7 @@ def onehot_to_label(data):
     else:
         return data
 
+
 class CustomFederatedDataset(object):
     """
 
@@ -512,14 +514,14 @@ class CustomFederatedDataset(object):
     """
 
     def __init__(
-            self,
-            train_data: list = [],
-            train_label: list = [],
-            test_data: list = [],
-            test_label: list = [],
-            part_num: int = 1,
-            part_id: list = [],
-            split_data: bool = False,
+        self,
+        train_data: list = [],
+        train_label: list = [],
+        test_data: list = [],
+        test_label: list = [],
+        part_num: int = 1,
+        part_id: list = [],
+        split_data: bool = False,
     ) -> None:
         """
 
@@ -583,8 +585,8 @@ class CustomFederatedDataset(object):
         return return_list
 
     def get_part_train(
-            self,
-            part: str
+        self,
+        part: str
     ) -> Tuple[ndarray, ndarray, int]:
         """
 
@@ -603,3 +605,77 @@ class CustomFederatedDataset(object):
 
         part_train_x, part_train_y, part_train_shape = self.part_data[part]
         return part_train_x, part_train_y, part_train_shape
+
+
+import torch
+from torch.utils.data import Dataset
+
+
+class DatasetSplit(Dataset):
+    """
+
+    An abstract Dataset class wrapped around Pytorch Dataset class.
+
+    """
+
+    def __init__(self, dataset):
+        """
+
+        Initialize the dataset object.
+
+        Args:
+            dataset(list): Data.
+
+        """
+
+        self.dataset = dataset
+        self.idxs = [int(i) for i in range(len(dataset))]
+
+    def __len__(self):
+        """
+
+        Get the size of the dataset.
+
+        Returns:
+            Int: The size of the dataset.
+
+        """
+
+        return len(self.idxs)
+
+    def __getitem__(self, item):
+        """
+
+        Get an item of the dataset.
+
+        Args:
+            item (int): Index ID.
+
+        Returns:
+            List: Return as a list, including:
+                torch.tensor: "X" in the dataset.
+                torch.tensor: "Y" in the dataset.
+
+        """
+
+        image, label = self.dataset[self.idxs[item]]
+        return torch.as_tensor(image), torch.as_tensor(label)
+
+
+def random_seed(seed):
+    """
+
+    Fixed random seed.
+
+    Args:
+        seed (int): random seed.
+
+    """
+
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.enabled = False
