@@ -31,9 +31,9 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.viewcode',
     'sphinx.ext.todo',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.mathjax',
-    'recommonmark',
+    # 'sphinx.ext.napoleon',
+    # 'sphinx.ext.mathjax',
+    # 'recommonmark',
     'sphinx_markdown_tables',
 ]
 
