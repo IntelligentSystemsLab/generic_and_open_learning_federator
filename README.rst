@@ -6,9 +6,6 @@ Generic and Open Learning Federator
 .. image:: https://img.shields.io/pypi/v/golf_federated.svg
         :target: https://pypi.python.org/pypi/golf_federated
 
-.. image:: https://img.shields.io/travis/MatZaharia/generic_and_open_learning_federator.svg
-        :target: https://travis-ci.com/MatZaharia/generic_and_open_learning_federator
-
 .. image:: https://readthedocs.org/projects/generic-and-open-learning-federator/badge/?version=latest
         :target: https://generic-and-open-learning-federator.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
@@ -26,7 +23,7 @@ A scalable, portable, and lightweight Federated Learning framework.
 News
 --------
 
-* June 08, 2024 -- Cedar (A Secure, Cost-Efficient and Domain-Adaptive Framework).
+#. June 08, 2024 -- Cedar (A Secure, Cost-Efficient and Domain-Adaptive Framework).
 
 Features
 --------
