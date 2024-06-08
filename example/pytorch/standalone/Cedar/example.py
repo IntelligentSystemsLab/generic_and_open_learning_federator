@@ -8,7 +8,7 @@ import os
 
 import torch
 
-from build.lib.golf_federated.server.process.config.device.standalone import StandAloneCedarServer
+from golf_federated.server.process.config.device.standalone import StandAloneCedarServer
 from golf_federated.server.process.config.model.torchmodel import CedarServerModel
 from golf_federated.server.process.strategy.selection.nonprobbased import AllSelect
 
@@ -48,8 +48,6 @@ if __name__ == '__main__':
         train_n = CedarTrainer(model=model_n)
         client_n.init_trainer(trainer=train_n)
         train_clients.append(client_n)
-        if len(train_clients) > 2:
-            break
 
     for index, path in enumerate(test_path_set):
         client_name = path.split(".")[-2][-4:]
@@ -64,8 +62,6 @@ if __name__ == '__main__':
         train_n = CedarTrainer(model=model_n)
         client_n.init_trainer(trainer=train_n)
         test_clients.append(client_n)
-        if len(train_clients) > 2:
-            break
 
     server = StandAloneCedarServer(
         server_name='server1',
@@ -82,7 +78,7 @@ if __name__ == '__main__':
         ),
         evaluation=Accuracy(target=0.9),
         aggregation=Cedar_syn(
-            detect=True,
+            detect=False,
             num_class=10,
             dataset_path='../../../data/non_iid_data/sfddd/test_client/p016.pt',
         ),
@@ -99,4 +95,5 @@ if __name__ == '__main__':
         task=task,
         client_objects=train_clients
     )
-    task.run_localization(20)
+    result_localize = task.run_localization(20)
+    result_localize.to_excel('./result_save_test/localize_result.xlsx', index=False)
