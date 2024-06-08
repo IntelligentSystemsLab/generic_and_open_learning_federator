@@ -11,6 +11,7 @@ Development Lead
 * `Yingwei Hou <https://github.com/Houyw5>`_
 * `Junlong Li <https://github.com/linjlong>`_
 * `Chenghan Wu <https://github.com/sysu19351138>`_
+* `IntelligentSystemsLab <https://github.com/IntelligentSystemsLab>`_
 
 Contributors
 ------------
