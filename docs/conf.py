@@ -18,8 +18,8 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'golf_federated'
-copyright = '2022, Author'
-author = 'Author'
+copyright = '2024, MatZaharia'
+author = 'MatZaharia'
 
 
 # -- General configuration ---------------------------------------------------
