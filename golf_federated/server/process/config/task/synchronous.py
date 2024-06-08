@@ -5,6 +5,7 @@
 # @Last Modified By   : GZH
 # @Last Modified Time : 2022/11/3 13:18
 import os
+from typing import List
 
 import pandas as pd
 import time
@@ -113,9 +114,12 @@ class CedarTask(BaseTask):
             task_name (str): Name of the task.
             maxround (int): Maximum number of aggregation rounds.
             aggregation (golf_federated.server.process.strategy.aggregation.base.BaseFed): Aggregation strategy object.
-            evaluation (golf_federated.server.process.strategy.evaluation.base.BaseEval): Evaluation strategy object.
             model (golf_federated.server.process.config.model.base.BaseModel): Model object.
             select (golf_federated.server.process.strategy.selection.base.BaseSelect): Select strategy object.
+            dataset (str): Name of dataset.
+            last_path (str): Specific folder name.
+            path_now (str): File path to save results.
+            evaluation (golf_federated.server.process.strategy.evaluation.base.BaseEval): Evaluation strategy object.
             module_path (str): File path to model module. Default as ''.
             isdocker (bool): Whether the task requires Docker. Default as False.
             image_name (str): Name of Docker image. Default as ''.
@@ -274,10 +278,19 @@ class CedarTask(BaseTask):
 
         return self.aggregation.aggregation_version >= self.maxround
 
-    def run_localization(self, local_test_epoch) -> bool:
+    def run_localization(
+        self,
+        local_test_epoch
+    ) -> pd.DataFrame:
         """
 
         Run model localization.
+
+        Args:
+            local_test_epoch (int): Number of localization round.
+
+        Returns:
+            pandas.DataFrame: Localization result, including Loss, Accuracy, Precision, Recall, F1-score, and Mcc.
 
         """
 
@@ -311,7 +324,7 @@ class CedarTask(BaseTask):
         dataframe = pd.DataFrame(result, columns=['loss', 'acc', 'pre', 'recall', 'f1', 'mcc'])  # --------
         return dataframe
 
-    def select_clients(self) -> list:
+    def select_clients(self) -> List:
         """
 
         Select clients.
@@ -323,10 +336,16 @@ class CedarTask(BaseTask):
 
         return self.select.select()
 
-    def weight_tofile(self, save_path) -> None:
+    def weight_tofile(
+        self,
+        save_path: str
+    ) -> None:
         """
 
         Save model weight to zip.
+
+        Args:
+            save_path (str): Path to save model.
 
         """
 
@@ -335,10 +354,16 @@ class CedarTask(BaseTask):
         import torch
         torch.save(self.model.model.state_dict(), save_path)
 
-    def save_result(self, save_path):
+    def save_result(
+        self,
+        save_path: str
+    ) -> None:
         """
 
         Save evaulation result.
+
+        Args:
+            save_path (str): Path to save result.
 
         """
 
@@ -347,10 +372,17 @@ class CedarTask(BaseTask):
                                  columns=['loss', 'acc', 'pre', 'recall', 'f1', 'mcc'])
         dataframe.to_excel(save_path, index=False)
 
-    def save_result_layer(self, save_path):
+    def save_result_layer(
+        self,
+        save_path: str
+    ) -> None:
         """
 
         Save result of layer.
+
+        Args:
+            save_path (str): Path to save result about layer.
+
 
         """
 

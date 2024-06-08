@@ -6,6 +6,8 @@
 # @Last Modified Time : 2022/11/3 12:43
 
 from abc import abstractmethod
+from typing import List
+
 from numpy import ndarray
 
 
@@ -100,7 +102,7 @@ class BaseEval(object):
         else:
             return False
 
-    def get_record(self) -> list:
+    def get_record(self) -> List:
         """
 
         Get the evaluation record.

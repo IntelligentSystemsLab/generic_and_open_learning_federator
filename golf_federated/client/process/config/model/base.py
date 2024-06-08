@@ -7,6 +7,8 @@
 
 import random
 from abc import abstractmethod
+from typing import List
+
 from numpy import ndarray
 
 from golf_federated.utils.model import get_model_parameter, set_model_parameter
@@ -21,11 +23,11 @@ class BaseModel(object):
     """
 
     def __init__(
-            self,
-            module: object,
-            train_data: ndarray,
-            train_label: ndarray,
-            process_unit: str
+        self,
+        module: object,
+        train_data: ndarray,
+        train_label: ndarray,
+        process_unit: str
     ) -> None:
         """
 
@@ -61,8 +63,8 @@ class BaseModel(object):
 
     @abstractmethod
     def predict(
-            self,
-            data: ndarray
+        self,
+        data: ndarray
     ) -> ndarray:
         """
 
@@ -78,7 +80,7 @@ class BaseModel(object):
 
         pass
 
-    def get_weight(self) -> list:
+    def get_weight(self) -> List:
         """
 
         Get model weight.
@@ -94,15 +96,15 @@ class BaseModel(object):
         )
 
     def update_weight(
-            self,
-            new_weight: list,
+        self,
+        new_weight: List,
     ) -> None:
         """
 
         Update model weight.
 
         Args:
-            new_weight (list): Model weight for update.
+            new_weight (List): Model weight for update.
 
         """
 
@@ -113,9 +115,9 @@ class BaseModel(object):
         )
 
     def choose_layer(
-            self,
-            prob_list: list
-    ) -> list:
+        self,
+        prob_list: List
+    ) -> List:
         """
 
         Get the model parameter and set some layers to None based on the specified probability, i.e. some layers are not uploaded.

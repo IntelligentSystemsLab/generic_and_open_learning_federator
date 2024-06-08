@@ -4,6 +4,7 @@
 # @Email              : guozh29@mail2.sysu.edu.cn
 # @Last Modified By   : GZH
 # @Last Modified Time : 2022/11/8 1:54
+from typing import List
 
 from golf_federated.server.process.strategy.selection.base import BaseSelect
 from golf_federated.server.process.strategy.selection.function import random_select_with_percentage, \
@@ -19,18 +20,18 @@ class ProbRandomSelect(BaseSelect):
 
     def __init__(
             self,
-            client_list: list,
+            client_list: List,
             select_num: int,
-            select_probability: list
+            select_probability: List
     ) -> None:
         """
 
         Initialize the ProbRandomSelect object.
 
         Args:
-            client_list (list): List of total clients.
+            client_list (List): List of total clients.
             select_num (int): Number of clients selected.
-            select_probability (list): List of selection probability.
+            select_probability (List): List of selection probability.
 
         """
 
@@ -40,7 +41,7 @@ class ProbRandomSelect(BaseSelect):
         # Initialize object properties.
         self.select_probability = select_probability
 
-    def select(self) -> list:
+    def select(self) -> List:
         """
 
         Client selection.
@@ -67,18 +68,18 @@ class ProbRankedSelect(BaseSelect):
 
     def __init__(
             self,
-            client_list: list,
+            client_list: List,
             select_num: int,
-            select_probability: list
+            select_probability: List
     ) -> None:
         """
 
         Initialize the ProbRankedSelect object.
 
         Args:
-            client_list (list): List of total clients.
+            client_list (List): List of total clients.
             select_num (int): Number of clients selected.
-            select_probability (list): List of selection probability.
+            select_probability (List): List of selection probability.
 
         """
 
@@ -88,7 +89,7 @@ class ProbRankedSelect(BaseSelect):
         # Initialize object properties.
         self.select_probability = select_probability
 
-    def select(self) -> list:
+    def select(self) -> List:
         """
 
         Client selection.

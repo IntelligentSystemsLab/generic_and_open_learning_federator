@@ -7,6 +7,7 @@
 import gc
 import random
 from copy import deepcopy
+from typing import List
 
 import torch
 import numpy as np
@@ -131,7 +132,7 @@ class CedarModel(BaseModel):
         self,
         module: object,
         model: object,
-        dataset: list,
+        dataset: List,
         stimulus_x: ndarray = None,
         layer_fea: dict = None,
         process_unit: str = "cpu"
@@ -141,18 +142,14 @@ class CedarModel(BaseModel):
         Initialize the PyTorch Model object.
 
         Args:
-            module (object): Model module, including predefined model structure, loss function, optimizer, etc.
-            train_data (numpy.ndarray): Data values for training.
-            train_label (numpy.ndarray): Data labels for training.
+            module (object): Model module, including learning rate, loss function, optimizer, etc.
+            model (object): Predefined model structure.
+            dataset (List): Dataset list, consisting of "[[sample,label]]"
             stimulus_x (numpy.ndarray): Stimuli data.
             layer_fea (dict): E.g., for ResNet18, {'layer1': 'feat1', 'layer2': 'feat2', 'layer3': 'feat3', 'layer4': 'feat4'}
             process_unit (str): Processing unit to perform local training. Default as "cpu".
 
         """
-
-        # Super class init.
-
-        # super().__init__(module, None, None, process_unit)
 
         self.library = module.library
         self.model = model
@@ -280,7 +277,11 @@ class CedarModel(BaseModel):
 
         Model test in evaluation clients.
 
+        Returns:
+            Tuple[List,List,List,List,List,List]: Evaluation result, including Loss, Accuracy, Precision, Recall, F1-score, and Mcc.
+
         """
+
         self.loss = self.loss.to(self.process_unit)
         self.model = self.model.to(self.process_unit)
 
@@ -348,6 +349,9 @@ class CedarModel(BaseModel):
         """
 
         Model localization.
+
+        Returns:
+            Tuple[numpy.array,numpy.array,numpy.array,numpy.array,numpy.array,numpy.array]: Evaluation result, including Loss, Accuracy, Precision, Recall, F1-score, and Mcc.
 
         """
 
@@ -461,10 +465,19 @@ class CedarModel(BaseModel):
         gc.collect()
         torch.cuda.empty_cache()
 
-    def calculate_local_RDV(self, E_list):
+    def calculate_local_RDV(
+        self,
+        E_list: List
+    ) -> List:
         """
 
         Calculate the RDV of the local model
+
+        Args:
+            E_list (List): Generated indexes for RDV
+
+        Returns:
+            List: RDV result.
 
         """
 
@@ -477,10 +490,19 @@ class CedarModel(BaseModel):
             RDV.append(temp_RDV)
         return RDV
 
-    def calculate_global_RDV(self, E_list):
+    def calculate_global_RDV(
+        self,
+        E_list: List
+    ) -> List:
         """
 
         Calculate the RDV of the global model
+
+        Args:
+            E_list (List): Generated indexes for RDV
+
+        Returns:
+            List: RDV result.
 
         """
 
@@ -529,10 +551,19 @@ class CedarModel(BaseModel):
                     if layer_name in k:
                         self.upgrade_weight[k] = None
 
-    def generate_E(self, E_number):
+    def generate_E(
+        self,
+        E_number: int
+    ) -> List:
         """
 
         Generate indexes for RDV
+
+        Args:
+            E_number (int): Number of indexes for RDV
+
+        Returns:
+            List: Generated indexes for RDV
 
         """
 
@@ -563,7 +594,7 @@ class CedarModel(BaseModel):
             w.data.copy_(w_t.data)
         self.global_net = deepcopy(self.model)
 
-    def get_weight(self) -> list:
+    def get_weight(self) -> List:
         """
 
         Get model weight.

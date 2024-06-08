@@ -6,6 +6,8 @@
 # @Last Modified Time : 2022/11/3 12:43
 from copy import deepcopy
 from queue import Queue
+from typing import List, Tuple
+
 import pandas as pd
 
 from golf_federated.server.process.strategy.aggregation.function import fedavg, SLMFedsyn, Cedarsyn
@@ -47,11 +49,11 @@ class FedAVG(BaseFed):
     def aggregate(
         self,
         datadict: {
-            'current_w': list,
+            'current_w': List,
             'parameter': Queue,
-            'record'   : list
+            'record'   : List
         }
-    ) -> list:
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -83,7 +85,7 @@ class FedAVG(BaseFed):
 
         return current_global_w
 
-    def get_field(self) -> list:
+    def get_field(self) -> List:
         """
 
         Get the fields needed for aggregation.
@@ -133,11 +135,11 @@ class FedProx(BaseFed):
     def aggregate(
         self,
         datadict: {
-            'current_w': list,
+            'current_w': List,
             'parameter': Queue,
-            'record'   : list
+            'record'   : List
         }
-    ) -> list:
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -169,7 +171,7 @@ class FedProx(BaseFed):
 
         return current_global_w
 
-    def get_field(self) -> list:
+    def get_field(self) -> List:
         """
 
         Get the fields needed for aggregation.
@@ -214,11 +216,11 @@ class SLMFed_syn(BaseFed):
     def aggregate(
         self,
         datadict: {
-            'current_w': list,
+            'current_w': List,
             'parameter': Queue,
-            'record'   : list
+            'record'   : List
         }
-    ) -> list:
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -258,7 +260,7 @@ class SLMFed_syn(BaseFed):
 
         return current_global_w
 
-    def get_field(self) -> list:
+    def get_field(self) -> List:
         """
 
         Get the fields needed for aggregation.
@@ -277,29 +279,32 @@ class SLMFed_syn(BaseFed):
 class Cedar_syn(BaseFed):
     """
 
-        Synchronous FL with SLMFed, inheriting from BaseFed class.
+        Synchronous FL with Cedar, inheriting from BaseFed class.
 
     """
 
     def __init__(
         self,
+        dataset_path: str,
         min_to_start: int = 2,
-        num_class=0,
-        detect=False,
-        dataset_path=None
+        num_class: int = 0,
+        detect: bool = False
     ) -> None:
         """
 
-        Initialize the SLMFed_syn object.
+        Initialize the Cedar object.
 
         Args:
+            dataset_path (str): Path to Stimuli.
             min_to_start (int): Minimum number of received local model parameters for global model aggregation. Default as 2.
+            num_class (int): Number of data classes. Default as 0.
+            detect (bool): Whether to detect malicious updates. Default as False.
 
         """
 
         # Super class init.
         super().__init__(
-            name='SLMFed_syn',
+            name='Cedar_syn',
             synchronous=True,
             min_to_start=min_to_start
         )
@@ -313,11 +318,11 @@ class Cedar_syn(BaseFed):
     def aggregate(
         self,
         datadict: {
-            'current_w': list,
+            'current_w': List,
             'parameter': Queue,
-            'record'   : list
+            'record'   : List
         }
-    ) -> list:
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -366,7 +371,7 @@ class Cedar_syn(BaseFed):
                                     detect=self.detect,
                                     stimulus_x=self.stimulus_x,
                                     current_model=current_model,
-                                    NUM_LAYER=NUM_LAYER,
+                                    num_layer=NUM_LAYER,
                                     layer_weight=layer_weight,
                                     upgrade_bool_list=upgrade_bool_list,
                                     require_judge_layer=require_judge_layer)
@@ -387,9 +392,23 @@ class Cedar_syn(BaseFed):
         """
 
         # Information richness and data size of client.
-        return ['informationRichness', 'dataSize']
+        return []
 
-    def prepare_stimulus_LFA(self, each_num):
+    def prepare_stimulus_LFA(
+        self,
+        each_num: int
+    ) -> Tuple:
+        """
+
+        Prepare the stimuli
+
+        Args:
+            each_num (int): Number of samples per class in the stimuli.
+
+        Returns:
+            Tuple[torch.tensor,torch.tensor]: Stimuli samples and labels.
+
+        """
 
         import torch
         stimulus_data_ori = torch.load(self.dataset_path)

@@ -6,6 +6,8 @@
 # @Last Modified Time : 2022/11/10 17:55
 
 from abc import abstractmethod
+from typing import List
+
 from numpy import ndarray
 
 
@@ -65,21 +67,21 @@ class BaseTrainer(object):
     @abstractmethod
     def update_model(
             self,
-            new_weight: list
+            new_weight: List
     ):
         """
 
         Abstract method for model weight update.
 
         Args:
-            new_weight (list): Model weight for update.
+            new_weight (List): Model weight for update.
 
         """
 
         pass
 
     @abstractmethod
-    def get_model(self) -> list:
+    def get_model(self) -> List:
         """
 
         Abstract method for model weight getting.

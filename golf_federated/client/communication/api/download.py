@@ -8,7 +8,7 @@
 import json
 import os
 import zipfile
-from typing import Tuple
+from typing import Tuple, List
 import requests
 
 from golf_federated.utils.log import loggerhear
@@ -66,7 +66,7 @@ def download_info(
         host: str,
         port: str,
         client_name: str
-) -> Tuple[bool, str, list]:
+) -> Tuple[bool, str, List]:
     """
 
     Client downloads task info.
@@ -80,7 +80,7 @@ def download_info(
         Tuple: Return as a tuple, including:
             isdocker (bool): Whether the task requires Docker.
             filename (str): File name of the task info.
-            aggregation_field (list): Fields required for model aggregation.
+            aggregation_field (List): Fields required for model aggregation.
 
     """
 

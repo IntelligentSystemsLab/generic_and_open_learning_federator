@@ -6,6 +6,8 @@
 # @Last Modified Time : 2022/11/10 13:30
 
 from abc import abstractmethod
+from typing import List
+
 from numpy import ndarray
 
 from golf_federated.utils.log import loggerhear
@@ -20,8 +22,8 @@ class BaseClient(object):
     """
 
     def __init__(
-            self,
-            client_name: str,
+        self,
+        client_name: str,
     ) -> None:
         """
 
@@ -39,8 +41,8 @@ class BaseClient(object):
 
     @abstractmethod
     def init_trainer(
-            self,
-            *args
+        self,
+        *args
     ) -> None:
         """
 
@@ -78,7 +80,7 @@ class BaseClient(object):
         loggerhear.log("Client Info  ", "Model prediction on %s!" % self.client_name)
         return self.trainer.predict()
 
-    def get_model(self) -> list:
+    def get_model(self) -> List:
         """
 
         Get the current local model weight.
@@ -93,8 +95,8 @@ class BaseClient(object):
 
     @abstractmethod
     def update_model(
-            self,
-            *args
+        self,
+        *args
     ) -> None:
         """
 

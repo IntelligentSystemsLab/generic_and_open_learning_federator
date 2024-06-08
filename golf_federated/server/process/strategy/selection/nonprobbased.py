@@ -6,6 +6,7 @@
 # @Last Modified Time : 2022/11/8 1:54
 
 import random
+from typing import List
 
 from golf_federated.server.process.strategy.selection.base import BaseSelect
 
@@ -17,7 +18,7 @@ class RandomSelect(BaseSelect):
 
     """
 
-    def select(self) -> list:
+    def select(self) -> List:
         """
 
         Client selection.
@@ -41,7 +42,7 @@ class AllSelect(BaseSelect):
 
     """
 
-    def select(self)-> list:
+    def select(self) -> List:
         """
 
         Client selection.

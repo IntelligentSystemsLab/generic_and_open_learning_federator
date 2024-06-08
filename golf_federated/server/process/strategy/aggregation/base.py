@@ -7,6 +7,7 @@
 
 from abc import abstractmethod
 from queue import Queue
+from typing import List
 
 
 class BaseFed(object):
@@ -17,10 +18,10 @@ class BaseFed(object):
     """
 
     def __init__(
-            self,
-            name: str,
-            synchronous: bool,
-            min_to_start: int
+        self,
+        name: str,
+        synchronous: bool,
+        min_to_start: int
     ) -> None:
         """
 
@@ -41,13 +42,13 @@ class BaseFed(object):
 
     @abstractmethod
     def aggregate(
-            self,
-            datadict: {
-                'current_w': list,
-                'parameter': Queue,
-                'record'   : list
-            }
-    ) -> list:
+        self,
+        datadict: {
+            'current_w': List,
+            'parameter': Queue,
+            'record'   : List
+        }
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -63,7 +64,7 @@ class BaseFed(object):
         pass
 
     @abstractmethod
-    def get_field(self) -> list:
+    def get_field(self) -> List:
         """
 
         Abstract method for getting the fields needed for aggregation.

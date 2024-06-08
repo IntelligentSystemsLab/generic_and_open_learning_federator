@@ -5,6 +5,7 @@
 # @Last Modified By   : GZH
 # @Last Modified Time : 2022/11/3 12:28
 from queue import Queue
+from typing import List
 
 import torch
 from golf_federated.server.process.strategy.aggregation.base import BaseFed
@@ -84,6 +85,7 @@ class CedarServerModel(BaseModel):
 
         Args:
             module (object): Model module, including predefined model structure, loss function, optimizer, etc.
+            model (object): Predefined model structure.
             test_data (numpy.ndarray): Data values for evaluation.
             test_label (numpy.ndarray): Data labels for evaluation.
             process_unit: Processing unit to perform evaluation. Default as "cpu".
@@ -105,24 +107,17 @@ class CedarServerModel(BaseModel):
     def predict(self) -> ndarray:
         """
 
-        Model prediction.
-
-        Returns:
-            Numpy.ndarray: Prediction result.
+        Model prediction. Not implemented here.
 
         """
 
-        # with torch.no_grad():
-        #     imput = self.test_data.to(self.process_unit)
-        #     result = self.model(imput).cpu().numpy()
-        # return result
-        return 0
+        pass
 
     def model_aggre(
         self,
         aggregation: BaseFed,
         parameter: Queue,
-        record: list
+        record: List
     ) -> None:
         """
 
@@ -131,7 +126,7 @@ class CedarServerModel(BaseModel):
         Args:
             aggregation (golf_federated.server.process.strategy.aggregation.base.BaseFed): Aggregation strategy object.
             parameter (queue.Queue): Uploaded parameters.
-            record (list): Records of evaluation.
+            record (List): Records of evaluation.
 
         """
 

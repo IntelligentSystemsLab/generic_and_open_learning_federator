@@ -7,6 +7,8 @@
 
 from abc import abstractmethod
 from queue import Queue
+from typing import List
+
 from numpy import ndarray
 
 from golf_federated.server.process.config.task.base import BaseTask
@@ -23,7 +25,7 @@ class BaseServer(object):
     def __init__(
             self,
             server_name: str,
-            client_pool: list = [],
+            client_pool: List = [],
     ) -> None:
         """
 
@@ -31,7 +33,7 @@ class BaseServer(object):
 
         Args:
             server_name (str): Name of the Server object.
-            client_pool (list): Client pool with client object or client name as element. Default as [].
+            client_pool (List): Client pool with client object or client name as element. Default as [].
 
         """
 

@@ -7,6 +7,8 @@
 
 from abc import abstractmethod
 from queue import Queue
+from typing import List
+
 from numpy import ndarray
 
 from golf_federated.server.process.strategy.aggregation.base import BaseFed
@@ -22,11 +24,11 @@ class BaseModel(object):
     """
 
     def __init__(
-            self,
-            module: object,
-            test_data: ndarray,
-            test_label: ndarray,
-            process_unit: str
+        self,
+        module: object,
+        test_data: ndarray,
+        test_label: ndarray,
+        process_unit: str
     ) -> None:
         """
 
@@ -60,7 +62,7 @@ class BaseModel(object):
 
         pass
 
-    def get_weight(self) -> list:
+    def get_weight(self) -> List:
         """
 
         Get model weight.
@@ -76,8 +78,8 @@ class BaseModel(object):
         )
 
     def update_weight(
-            self,
-            new_weight: list,
+        self,
+        new_weight: List,
     ) -> None:
         """
 
@@ -95,10 +97,10 @@ class BaseModel(object):
         )
 
     def model_aggre(
-            self,
-            aggregation: BaseFed,
-            parameter: Queue,
-            record: list
+        self,
+        aggregation: BaseFed,
+        parameter: Queue,
+        record: List
     ) -> None:
         """
 
@@ -107,7 +109,7 @@ class BaseModel(object):
         Args:
             aggregation (golf_federated.server.process.strategy.aggregation.base.BaseFed): Aggregation strategy object.
             parameter (queue.Queue): Uploaded parameters.
-            record (list): Records of evaluation.
+            record (List): Records of evaluation.
 
         """
 
@@ -124,8 +126,8 @@ class BaseModel(object):
         self.update_weight(new_weight=new_weight)
 
     def model_eval(
-            self,
-            evaluation: BaseEval
+        self,
+        evaluation: BaseEval
     ) -> None:
         """
 

@@ -6,6 +6,8 @@
 # @Last Modified Time : 2022/11/8 1:56
 
 import random
+from typing import List
+
 import numpy as np
 
 from golf_federated.utils.data import deepcopy_list, list_normalization
@@ -13,16 +15,16 @@ from golf_federated.utils.log import loggerhear
 
 
 def random_select(
-        client_list: list,
-        client_selected_probability: list
-) -> list:
+    client_list: List,
+    client_selected_probability: List
+) -> List:
     """
 
     Random client selection without limit on quantity.
 
     Args:
-        client_list (list): Total client list.
-        client_selected_probability (list): The probability of being selected for each client.
+        client_list (List): Total client list.
+        client_selected_probability (List): The probability of being selected for each client.
 
     Returns:
         List: List of selected clients.
@@ -44,17 +46,17 @@ def random_select(
 
 
 def random_select_with_percentage(
-        client_list: list,
-        client_selected_probability: list,
-        select_percentage: float
-) -> list:
+    client_list: List,
+    client_selected_probability: List,
+    select_percentage: float
+) -> List:
     """
 
     Random client selection based on a specified percentage.
 
     Args:
-        client_list (list): Total client list.
-        client_selected_probability (list): The probability of being selected for each client.
+        client_list (List): Total client list.
+        client_selected_probability (List): The probability of being selected for each client.
         select_percentage (float): Percentage of selected clients.
 
     Returns:
@@ -77,17 +79,17 @@ def random_select_with_percentage(
 
 
 def rank_select_with_percentage(
-        client_list: list,
-        client_selected_probability: list,
-        select_percentage: float
-) -> list:
+    client_list: List,
+    client_selected_probability: List,
+    select_percentage: float
+) -> List:
     """
 
     Ranked client selection based on a specified percentage.
 
     Args:
-        client_list (list): Total client list.
-        client_selected_probability (list): The probability of being selected for each client.
+        client_list (List): Total client list.
+        client_selected_probability (List): The probability of being selected for each client.
         select_percentage (float): Percentage of selected clients.
 
     Returns:
@@ -106,16 +108,16 @@ def rank_select_with_percentage(
 
 
 def random_pick(
-        obj: list,
-        prob: list
+    obj: List,
+    prob: List
 ) -> int:
     """
 
     Randomly select an object from the list and get its index number.
 
     Args:
-        obj (list): Source list.
-        prob (list): The corresponding probability of objects.
+        obj (List): Source list.
+        prob (List): The corresponding probability of objects.
 
     Returns:
         Int: The selected index number.
@@ -131,13 +133,14 @@ def random_pick(
 
     return -1
 
-def softmax_prob_from_indicators(indicators: list) -> list:
+
+def softmax_prob_from_indicators(indicators: List) -> List:
     """
 
     Convert each index value into probability with softmax.
 
     Args:
-        indicators (list): List of indicators.
+        indicators (List): List of indicators.
 
     Returns:
         List: List of probabilities after softmax.

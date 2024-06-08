@@ -6,7 +6,7 @@
 # @Last Modified Time : 2022/10/27 1:44
 
 import os
-from typing import Tuple
+from typing import Tuple, List
 from numpy import ndarray
 import numpy as np
 from scipy.spatial.distance import squareform, pdist
@@ -97,9 +97,9 @@ from golf_federated.utils.log import loggerhear
 
 
 def get_model_parameter(
-        model: object,
-        library: str
-) -> list:
+    model: object,
+    library: str
+) -> List:
     """
 
     Get parameters of the specified model.
@@ -136,9 +136,9 @@ def get_model_parameter(
 
 
 def set_model_parameter(
-        model: object,
-        w: list,
-        library: str
+    model: object,
+    w: List,
+    library: str
 ) -> object:
     """
 
@@ -146,7 +146,7 @@ def set_model_parameter(
 
     Args:
         model (object): Model that will be set parameters.
-        w (list):  List of parameters to be set to the model.
+        w (List):  List of parameters to be set to the model.
         library (str): The library used to build model.
 
     Returns:
@@ -175,7 +175,6 @@ def set_model_parameter(
         exit(1)
 
     return model
-
 
 # def save_model(
 #         model: object,

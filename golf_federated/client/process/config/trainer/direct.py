@@ -4,7 +4,7 @@
 # @Email              : guozh29@mail2.sysu.edu.cn
 # @Last Modified By   : GZH
 # @Last Modified Time : 2022/11/10 17:56
-from typing import List
+from typing import List, Tuple
 
 from numpy import ndarray
 
@@ -71,21 +71,21 @@ class DirectTrainer(BaseTrainer):
 
     def update_model(
         self,
-        new_weight: list
+        new_weight: List
     ) -> None:
         """
 
         Model weight update.
 
         Args:
-            new_weight (list): Model weight for update.
+            new_weight (List): Model weight for update.
 
         """
 
         # Call model objects to update model weight.
         self.model.update_weight(new_weight=new_weight)
 
-    def get_model(self) -> list:
+    def get_model(self) -> List:
         """
 
         Get model weight.
@@ -190,12 +190,13 @@ class CedarTrainer(BaseTrainer):
         # Call model objects to perform prediction.
         return self.model.predict(data)
 
-    def test(
-        self,
-    ) -> List:
+    def test(self) -> Tuple:
         """
 
         evaluation.
+
+        Returns:
+            Turple[List,List,List,List,List,List]: Evaluation result, including Loss, Accuracy, Precision, Recall, F1-score, and Mcc.
 
         """
 
@@ -204,10 +205,13 @@ class CedarTrainer(BaseTrainer):
 
     def localize(
         self,
-    ) -> List:
+    ) -> Tuple:
         """
 
         evaluation.
+
+        Returns:
+            Turple[numpy.array,numpy.array,numpy.array,numpy.array,numpy.array,numpy.array]: Evaluation result, including Loss, Accuracy, Precision, Recall, F1-score, and Mcc.
 
         """
 
@@ -242,21 +246,21 @@ class CedarTrainer(BaseTrainer):
 
     def update_model(
         self,
-        new_weight: list
+        new_weight: List
     ) -> None:
         """
 
         Model weight update.
 
         Args:
-            new_weight (list): Model weight for update.
+            new_weight (List): Model weight for update.
 
         """
 
         # Call model objects to update model weight.
         self.model.update_weight(new_weight=new_weight)
 
-    def get_model(self) -> list:
+    def get_model(self) -> List:
         """
 
         Get model weight.

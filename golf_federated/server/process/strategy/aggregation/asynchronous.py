@@ -6,6 +6,7 @@
 # @Last Modified Time : 2022/11/3 12:43
 
 from queue import Queue
+from typing import List
 
 from golf_federated.server.process.strategy.aggregation.base import BaseFed
 from golf_federated.server.process.strategy.aggregation.function import fedfd, SLMFedasyn, fedasync
@@ -21,8 +22,8 @@ class FedFD(BaseFed):
     """
 
     def __init__(
-            self,
-            min_to_start: int = 2
+        self,
+        min_to_start: int = 2
     ) -> None:
         """
 
@@ -42,13 +43,13 @@ class FedFD(BaseFed):
         loggerhear.log("Server Info  ", "Being Adopting FedFD")
 
     def aggregate(
-            self,
-            datadict: {
-                'current_w': list,
-                'parameter': Queue,
-                'record'   : list
-            }
-    ) -> list:
+        self,
+        datadict: {
+            'current_w': List,
+            'parameter': Queue,
+            'record'   : List
+        }
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -88,7 +89,7 @@ class FedFD(BaseFed):
 
         return current_global_w
 
-    def get_field(self) -> list:
+    def get_field(self) -> List:
         """
 
         Get the fields needed for aggregation.
@@ -112,11 +113,11 @@ class FedAsync(BaseFed):
     """
 
     def __init__(
-            self,
-            alpha: float = 0.5,
-            beta: float = 0.0,
-            staleness: str = 'Polynomial',
-            min_to_start: int = 2
+        self,
+        alpha: float = 0.5,
+        beta: float = 0.0,
+        staleness: str = 'Polynomial',
+        min_to_start: int = 2
     ) -> None:
         """
 
@@ -144,13 +145,13 @@ class FedAsync(BaseFed):
         loggerhear.log("Server Info  ", "Being Adopting FedAsync")
 
     def aggregate(
-            self,
-            datadict: {
-                'current_w': list,
-                'parameter': Queue,
-                'record'   : list
-            }
-    ) -> list:
+        self,
+        datadict: {
+            'current_w': List,
+            'parameter': Queue,
+            'record'   : List
+        }
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -195,7 +196,7 @@ class FedAsync(BaseFed):
 
         return current_global_w
 
-    def get_field(self) -> list:
+    def get_field(self) -> List:
         """
 
         Get the fields needed for aggregation.
@@ -217,20 +218,20 @@ class SLMFed_asyn(BaseFed):
     """
 
     def __init__(
-            self,
-            target_acc: float,
-            func: str = 'other',
-            min_to_start: int = 2,
+        self,
+        target_acc: float,
+        func: str = 'other',
+        min_to_start: int = 2,
     ) -> None:
         """
-        
+
         Initialize the SLMFed_asyn object.
-                
+
         Args:
             target_acc(float): Target accuracy of the task.
             func (str):  Function to adjust aggregation weights. Default as 'other'.
             min_to_start (int): Minimum number of received local model parameters for global model aggregation. Default as 2.
-            
+
         """
 
         # Super class init.
@@ -246,13 +247,13 @@ class SLMFed_asyn(BaseFed):
         loggerhear.log("Server Info  ", "Being Adopting SLMFed_asyn")
 
     def aggregate(
-            self,
-            datadict: {
-                'current_w': list,
-                'parameter': Queue,
-                'record'   : list
-            }
-    ) -> list:
+        self,
+        datadict: {
+            'current_w': List,
+            'parameter': Queue,
+            'record'   : List
+        }
+    ) -> List:
         """
 
         Abstract method for aggregation.
@@ -305,7 +306,7 @@ class SLMFed_asyn(BaseFed):
 
         return current_global_w
 
-    def get_field(self) -> list:
+    def get_field(self) -> List:
         """
 
         Get the fields needed for aggregation.

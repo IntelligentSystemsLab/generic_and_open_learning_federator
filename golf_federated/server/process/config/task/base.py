@@ -11,6 +11,8 @@ import time
 import zipfile
 from abc import abstractmethod
 from queue import Queue
+from typing import List
+
 import numpy as np
 
 from golf_federated.server.process.config.model.base import BaseModel
@@ -27,17 +29,17 @@ class BaseTask(object):
     """
 
     def __init__(
-            self,
-            task_name: str,
-            maxround: int,
-            synchronous: bool,
-            aggregation: BaseFed,
-            evaluation: BaseEval,
-            model: BaseModel,
-            select: BaseSelect,
-            module_path: str,
-            isdocker: bool = False,
-            image_name: str = ''
+        self,
+        task_name: str,
+        maxround: int,
+        synchronous: bool,
+        aggregation: BaseFed,
+        evaluation: BaseEval,
+        model: BaseModel,
+        select: BaseSelect,
+        module_path: str,
+        isdocker: bool = False,
+        image_name: str = ''
     ) -> None:
         """
 
@@ -78,8 +80,8 @@ class BaseTask(object):
         self.weight_path = ''
 
     def start(
-            self,
-            client_list: list,
+        self,
+        client_list: List,
     ) -> None:
         """
 
@@ -100,8 +102,8 @@ class BaseTask(object):
 
     @abstractmethod
     def start_aggregation(
-            self,
-            aggregation_parameter: Queue
+        self,
+        aggregation_parameter: Queue
     ) -> bool:
         """
 
@@ -118,8 +120,8 @@ class BaseTask(object):
         pass
 
     def run_aggregation(
-            self,
-            aggregation_parameter: Queue
+        self,
+        aggregation_parameter: Queue
     ) -> bool:
         """
 
@@ -168,7 +170,7 @@ class BaseTask(object):
         # Multiple evaluation conditions.
         return self.evaluation.reach_target() or self.evaluation.reach_convergence() or self.aggregation.aggregation_version >= self.maxround
 
-    def select_clients(self) -> list:
+    def select_clients(self) -> List:
         """
 
         Select clients.

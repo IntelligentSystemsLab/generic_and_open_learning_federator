@@ -6,6 +6,7 @@
 # @Last Modified Time : 2022/11/8 1:50
 
 from abc import abstractmethod
+from typing import List
 
 
 class BaseSelect(object):
@@ -16,16 +17,16 @@ class BaseSelect(object):
     """
 
     def __init__(
-            self,
-            client_list: list,
-            select_num: int
+        self,
+        client_list: List,
+        select_num: int
     ) -> None:
         """
 
         Initialize the base class object of the selection strategy, which is called when subclasses inherit.
 
         Args:
-            client_list (list): List of total clients.
+            client_list (List): List of total clients.
             select_num (int): Number of clients selected.
 
         """
@@ -35,7 +36,7 @@ class BaseSelect(object):
         self.select_num = select_num
 
     @abstractmethod
-    def select(self) -> list:
+    def select(self) -> List:
         """
 
         Abstract method for client selection.

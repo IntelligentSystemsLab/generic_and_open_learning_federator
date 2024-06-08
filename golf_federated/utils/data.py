@@ -8,7 +8,7 @@
 import os
 import random
 from collections import Counter
-from typing import Any, Tuple
+from typing import Any, Tuple, List
 import h5py
 import numpy as np
 from numpy import ndarray
@@ -18,12 +18,12 @@ from golf_federated.utils.log import loggerhear
 
 
 def generate_fl_data(
-    train_data: list,
-    train_label: list,
-    test_data: list,
-    test_label: list,
+    train_data: List,
+    train_label: List,
+    test_data: List,
+    test_label: List,
     part_num: int,
-    part_id: list = [],
+    part_id: List = [],
     split_data: bool = False,
 ) -> dict:
     """
@@ -32,12 +32,12 @@ def generate_fl_data(
     Default division of the training data part is named as number, which is defined in dataset class.
 
     Args:
-        train_data (list): List of file paths to store data values for training.
-        train_label (list): List of file paths to store data labels for training.
-        test_data (list): List of file paths to store data values for evaluation.
-        test_label (list): List of file paths to store data labels for evaluation.
+        train_data (List): List of file paths to store data values for training.
+        train_label (List): List of file paths to store data labels for training.
+        test_data (List): List of file paths to store data values for evaluation.
+        test_label (List): List of file paths to store data labels for evaluation.
         part_num (int): Number of datasets that will be divided and distributed to clients. If dataset is for server, the number of divisions is 1.
-        part_id (list): List of names of divided parts, usually the client names. Dataset for server can not set this property. Default as [].
+        part_id (List): List of names of divided parts, usually the client names. Dataset for server can not set this property. Default as [].
         split_data (bool): Whether the above data file lists are divided according to part_id. Default as False.
 
     Returns:
@@ -184,13 +184,13 @@ def split_to_num(
         return return_dict
 
 
-def merge_data(data_list: list):
+def merge_data(data_list: List):
     """
 
     Merge data stored in list into an array.
 
     Args:
-        data_list (list): List of data.
+        data_list (List): List of data.
 
     Returns:
         Numpy.ndarray: Merged data array.
@@ -213,7 +213,7 @@ def merge_data(data_list: list):
 def match_id_data(
     x: ndarray,
     y: ndarray,
-    part_id: list,
+    part_id: List,
     part_num: int
 ) -> dict:
     """
@@ -223,7 +223,7 @@ def match_id_data(
     Args:
         x (numpy.ndarray): Value of the divided data, generally stored in an array, or stored in a list.
         y (numpy.ndarray): Label of the divided data, generally stored in an array, or stored in a list.
-        part_id (list): List of names of divided parts, usually the client names.
+        part_id (List): List of names of divided parts, usually the client names.
         part_num (int): Number of parts.
 
     Returns:
@@ -247,13 +247,13 @@ def match_id_data(
     return return_dict
 
 
-def load_file_list(filelist: list) -> dict:
+def load_file_list(filelist: List) -> dict:
     """
 
     Load data from a list of file paths.
 
     Args:
-        filelist (list): List of file paths to store data.
+        filelist (List): List of file paths to store data.
 
     Returns:
         Dict: Data is returned as a dictionary, including a list of data and a list of corresponding sizes.
@@ -455,13 +455,13 @@ def calculate_IW(y: ndarray) -> float:
 #     return len_label
 
 
-def deepcopy_list(list_to_copy: list) -> list:
+def deepcopy_list(list_to_copy: List) -> List:
     """
 
     Deep copy list iteratively.
 
     Args:
-        list_to_copy (list): Source of copy.
+        list_to_copy (List): Source of copy.
 
     Returns:
         List: Result of deep copy.
@@ -477,13 +477,13 @@ def deepcopy_list(list_to_copy: list) -> list:
             return [deepcopy_list(list_to_copy[x]) for x in range(len(list_to_copy))]
 
 
-def list_normalization(list_: list) -> list:
+def list_normalization(list_: List) -> List:
     """
 
     Normalize the list of data.
 
     Args:
-        list_ (list): Data list.
+        list_ (List): Data list.
 
     Returns:
         List: Normalized data list.
@@ -515,12 +515,12 @@ class CustomFederatedDataset(object):
 
     def __init__(
         self,
-        train_data: list = [],
-        train_label: list = [],
-        test_data: list = [],
-        test_label: list = [],
+        train_data: List = [],
+        train_label: List = [],
+        test_data: List = [],
+        test_label: List = [],
         part_num: int = 1,
-        part_id: list = [],
+        part_id: List = [],
         split_data: bool = False,
     ) -> None:
         """
@@ -528,12 +528,12 @@ class CustomFederatedDataset(object):
         Initialize the dataset object.
 
         Args:
-            train_data (list): List of file paths to store data values for training. Default as [].
-            train_label (list): List of file paths to store data labels for training. Default as [].
-            test_data (list): List of file paths to store data values for evaluation. Default as [].
-            test_label (list): List of file paths to store data labels for evaluation. Default as [].
+            train_data (List): List of file paths to store data values for training. Default as [].
+            train_label (List): List of file paths to store data labels for training. Default as [].
+            test_data (List): List of file paths to store data values for evaluation. Default as [].
+            test_label (List): List of file paths to store data labels for evaluation. Default as [].
             part_num (int): Number of datasets that will be divided and distributed to clients. If dataset is for server, the number of divisions is 1. Default as 1.
-            part_id (list): List of names of divided parts, usually the client names. Dataset for server can not set this property. Default as [].
+            part_id (List): List of names of divided parts, usually the client names. Dataset for server can not set this property. Default as [].
             split_data (bool): Whether the above data file lists are divided according to part_id. Default as False.
 
         """
@@ -570,7 +570,7 @@ class CustomFederatedDataset(object):
         self.test_data = federated_data['testX']
         self.test_label = federated_data['testY']
 
-    def part_to_list(self) -> list:
+    def part_to_list(self) -> List:
         """
 
         The names and corresponding data in the object are stored in dictionaries.

@@ -7,6 +7,8 @@
 
 import json
 import zipfile
+from typing import List
+
 import requests
 import numpy as np
 
@@ -14,11 +16,11 @@ from golf_federated.utils.log import loggerhear
 
 
 def upload_model(
-        host: str,
-        port: str,
-        client_name: str,
-        model: list,
-        aggregation_field: dict
+    host: str,
+    port: str,
+    client_name: str,
+    model: List,
+    aggregation_field: dict
 ) -> bytes:
     """
 
@@ -28,7 +30,7 @@ def upload_model(
         host (str): Host name to connect to the host.
         port (str): Port number to connect to the host.
         client_name (str): Client name to upload.
-        model (list): Local model weight.
+        model (List): Local model weight.
         aggregation_field (dict): Aggregate fields with corresponding values.
 
     Returns:

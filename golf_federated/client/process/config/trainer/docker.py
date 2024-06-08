@@ -6,6 +6,8 @@
 # @Last Modified Time : 2022/11/10 17:57
 
 import os
+from typing import List
+
 import numpy as np
 from numpy import ndarray
 
@@ -138,20 +140,20 @@ class DockerTrainer(BaseTrainer):
 
     def update_model(
             self,
-            new_weight: list
+            new_weight: List
     ) -> None:
         """
 
         Model weight update.
 
         Args:
-            new_weight (list): Model weight for update.
+            new_weight (List): Model weight for update.
 
         """
 
         self.weight = deepcopy_list(new_weight)
 
-    def get_model(self) -> list:
+    def get_model(self) -> List:
         """
 
         Get model weight.

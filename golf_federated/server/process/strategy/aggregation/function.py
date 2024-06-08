@@ -5,24 +5,25 @@
 # @Last Modified By   : GZH
 # @Last Modified Time : 2022/11/3 12:43
 from copy import deepcopy
-from typing import Callable
+from typing import Callable, List
 import numpy as np
 import math
+import pandas as pd
 
 from golf_federated.utils.data import deepcopy_list
 
 
 def fedavg(
-    weight: list,
-    data_size: list
-) -> list:
+    weight: List,
+    data_size: List
+) -> List:
     """
 
     Function implementation of FedAVG, which directly averages the corresponding values of collected model parameters.
 
     Args:
-        weight (list): List of models to aggregate.
-        data_size (list): List of data sizes of clients.
+        weight (List): List of models to aggregate.
+        data_size (List): List of data sizes of clients.
 
     Returns:
         List: The model generated after aggregation. And use a list to store the parameters of different layers.
@@ -44,17 +45,17 @@ def fedavg(
 
 
 def fedfd(
-    client_id: list,
+    client_id: List,
     weight: dict,
     client_round: dict,
     version_latest: int,
-) -> list:
+) -> List:
     """
 
     Function implementation of FedFD, which weighted averages the corresponding values of collected model parameters.
 
     Args:
-        client_id (list): ID of clients that upload the models.
+        client_id (List): ID of clients that upload the models.
         weight (dict): Corresponding dictionary of client IDs and models to aggregate.
         client_round (dict): Corresponding dictionary of client IDs and number of training rounds for local models.
         version_latest (int): Latest model version.
@@ -82,22 +83,24 @@ def fedfd(
 
 
 def fedasync(
-    client_id: list,
+    client_id: List,
     weight: dict,
     staleness: str,
-    current_weight: list,
+    current_weight: List,
     current_round: int,
     client_round: dict,
     alpha: float,
     beta: float
-) -> list:
+) -> List:
     """
 
+    Function implementation of FedAsync.
+
     Args:
-        client_id (list): List of uploaded client names.
+        client_id (List): List of uploaded client names.
         weight (dict): Dict of uploaded local model weight.
         staleness (str): Corresponds to the name of the function defined in FedAsync.
-        current_weight (list): Current global model parameters.
+        current_weight (List): Current global model parameters.
         current_round (int): Number of current training round.
         client_round (dict): Number of global round corresponding to the model trained by each client.
         alpha (float): Corresponds to the parameter α defined in FedAsync.
@@ -151,16 +154,18 @@ def fedasync(
 
 
 def SLMFedsyn(
-    weight: list,
-    aggregate_percentage: list,
-    current_weight: list
-) -> list:
+    weight: List,
+    aggregate_percentage: List,
+    current_weight: List
+) -> List:
     """
 
+    Function implementation of SLMFed_Sync.
+
     Args:
-        weight (list): List of client model parameters for aggregation.
-        aggregate_percentage (list): Aggregate weights for each client.
-        current_weight (list): Current global model parameters.
+        weight (List): List of client model parameters for aggregation.
+        aggregate_percentage (List): Aggregate weights for each client.
+        current_weight (List): Current global model parameters.
 
     Returns:
         List: The model generated after aggregation. And use a list to store the parameters of different layers.
@@ -203,21 +208,23 @@ def SLMFedsyn(
 
 
 def SLMFedasyn(
-    client_id: list,
+    client_id: List,
     weight: dict,
     aggregate_percentage: dict,
-    current_weight: list,
+    current_weight: List,
     current_acc: float,
     target_acc: float,
     func: str
-) -> list:
+) -> List:
     """
 
+    Function implementation of SLMFed_Async.
+
     Args:
-        client_id (list): List of client IDs for aggregation.
+        client_id (List): List of client IDs for aggregation.
         weight (dict): Dictionary of client model parameters for aggregation.
         aggregate_percentage (dict): Aggregate weights for each client.
-        current_weight (list): Current global model parameters.
+        current_weight (List): Current global model parameters.
         current_acc (float): Current accuracy corresponding to the global model.
         target_acc (float): Target accuracy of the task.
         func (str):  Function to adjust aggregation weights. Default as 'other'.
@@ -275,8 +282,8 @@ def SLMFedasyn(
 
 def fedprox_loss(
     model_library: str,
-    w_global: list,
-    w_local: list,
+    w_global: List,
+    w_local: List,
     miu: float = 1
 ) -> Callable:
     """
@@ -285,8 +292,8 @@ def fedprox_loss(
 
     Args:
         model_library (str): The library used to build model.
-        w_global (list): Global model.
-        w_local (list): Local model.
+        w_global (List): Global model.
+        w_local (List): Local model.
         miu (float): Corresponds to the parameter μ defined in FedProx. Default as 1.
 
     Returns:
@@ -320,33 +327,41 @@ def corr2(a, b):
     return r
 
 
+import torch
+from torch.autograd import Variable
+
+
 def Cedarsyn(
-    local_model: list,
+    local_model: List,
     detect: bool,
-    current_model: list,
-    NUM_LAYER,
-    layer_weight,
-    stimulus_x,
-    require_judge_layer,
-    upgrade_bool_list,
-) -> list:
+    current_model: object,
+    num_layer: int,
+    layer_weight: List,
+    stimulus_x: torch.tensor,
+    require_judge_layer: List,
+    upgrade_bool_list: pd.DataFrame,
+) -> object:
     """
+
+    Function implementation of Cedar_Sync.
 
     Args:
-        weight (list): List of client model parameters for aggregation.
-        aggregate_percentage (list): Aggregate weights for each client.
-        current_weight (list): Current global model parameters.
+        local_model (List): List of client model parameters for aggregation.
+        detect (bool): Whether to detect malicious updates.
+        current_model (object): Current global model.
+        num_layer (int): Number of layers involved in filtering.
+        layer_weight (List): Weights to measure the importance of layers.
+        stimulus_x (torch.tensor): Stimuli.
+        require_judge_layer (List): Layers involved in filtering.
+        upgrade_bool_list (pandas.DataFrame): Matrix of whether the layer is uploaded.
 
     Returns:
-        List: The model generated after aggregation. And use a list to store the parameters of different layers.
+        object: Updated model.
 
     """
 
-    import torch
-    from torch.autograd import Variable
-
     require_fill_layer = []
-    for i in range(NUM_LAYER):
+    for i in range(num_layer):
         if layer_weight[i] == 'inf':
             require_fill_layer.append(require_judge_layer[i])
 
@@ -391,11 +406,9 @@ def Cedarsyn(
             if cluster_result[i] == cluster_benign:
                 id_train.append(i)
                 aggregate_percentage[i] = 0
-    min_aggregate_percentage = min(aggregate_percentage)
-    max_aggregate_percentage = max(aggregate_percentage)
+    sum_aggregate_percentage = sum(aggregate_percentage)
     for a in range(len(aggregate_percentage)):
-        aggregate_percentage[a] = (aggregate_percentage[a] - min_aggregate_percentage) / (
-            max_aggregate_percentage - min_aggregate_percentage)
+        aggregate_percentage[a] = aggregate_percentage[a] / sum_aggregate_percentage
     aggregate_percentage = np.array(aggregate_percentage)
 
     for j in range(len(local_model)):

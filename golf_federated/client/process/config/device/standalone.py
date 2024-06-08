@@ -5,6 +5,7 @@
 # @Last Modified By   : GZH
 # @Last Modified Time : 2022/11/10 13:30
 from copy import deepcopy
+from typing import List
 
 from golf_federated.client.process.config.device.base import BaseClient
 from golf_federated.client.process.config.trainer.base import BaseTrainer
@@ -55,14 +56,14 @@ class StandAloneClient(BaseClient):
 
     def update_model(
         self,
-        new_weight: list
+        new_weight: List
     ) -> None:
         """
 
         Update local model weight.
 
         Args:
-            new_weight (list): Model weight for update.
+            new_weight (List): Model weight for update.
 
         """
 
@@ -114,14 +115,14 @@ class CedarClient(BaseClient):
 
     def update_model(
         self,
-        new_weight: list
+        new_weight: List
     ) -> None:
         """
 
         Update local model weight.
 
         Args:
-            new_weight (list): Model weight for update.
+            new_weight (List): Model weight for update.
 
         """
 
