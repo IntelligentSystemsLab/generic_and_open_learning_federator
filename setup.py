@@ -39,7 +39,7 @@ setup(
     test_suite='example.test.test',
     tests_require=test_requirements,
     url='https://github.com/MatZaharia/generic_and_open_learning_federator',
-    version='0.1.0',
+    version='0.2.0',
     zip_safe=False,
 
 )

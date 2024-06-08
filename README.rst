@@ -23,6 +23,11 @@ A scalable, portable, and lightweight Federated Learning framework.
 * Documentation: https://generic-and-open-learning-federator.readthedocs.io.
 
 
+News
+--------
+
+* June 08, 2024 -- Cedar (A Secure, Cost-Efficient and Domain-Adaptive Framework).
+
 Features
 --------
 
