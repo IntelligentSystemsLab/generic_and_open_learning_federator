@@ -6,6 +6,8 @@ Generic and Open Learning Federator
 .. image:: https://img.shields.io/pypi/v/golf_federated.svg
         :target: https://pypi.python.org/pypi/golf_federated
 
+.. image:: https://app.travis-ci.com/IntelligentSystemsLab/generic_and_open_learning_federator.svg?token=uyV9JpsFqExQVbjDeQ5q&branch=main
+
 .. image:: https://readthedocs.org/projects/generic-and-open-learning-federator/badge/?version=latest
         :target: https://generic-and-open-learning-federator.readthedocs.io/en/latest/?version=latest
         :alt: Documentation Status
