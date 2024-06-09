@@ -76,13 +76,17 @@ Contact
 
 For any questions or issues, please contact the development team at `guozh29@mail2.sysu.edu.cn`.
 
+Related Publications
+--------------------
 
-[1]  L. You, S. Liu, B. Zuo, C. Yuen*, D. Niyato, H. V. Poor,"Federated and Asynchronized Learning for Autonomous and Intelligent Things", IEEE Network Magazine, 2023.
+We have published several papers related to this project:
 
-[2]  L. You, S. Liu, T. Wang, B. Zuo, Y. Chang, C. Yuen*,"AiFed: An Adaptive and Integrated Mechanism for Asynchronous Federated Data Mining", IEEE Transactions on Knowledge and Data Engineering, 2023.
+    [1]  `L. You, S. Liu, B. Zuo, C. Yuen*, D. Niyato, H. V. Poor,"Federated and Asynchronized Learning for Autonomous and Intelligent Things", IEEE Network Magazine, 2023. <https://ieeexplore.ieee.org/document/10274563>`_
 
-[3]  L. You, Z. Guo, B. Zuo, Y. Chang*, C. Yuen,"SLMFed: A Stage-based and Layer-wise Mechanism for Incremental Federated Learning to Assist Dynamic and Ubiquitous IoT", IEEE Internet of Things Journal, 2024.
+    [2]  `L. You, S. Liu, T. Wang, B. Zuo, Y. Chang, C. Yuen*,"AiFed: An Adaptive and Integrated Mechanism for Asynchronous Federated Data Mining", IEEE Transactions on Knowledge and Data Engineering, 2023. <https://ieeexplore.ieee.org/document/10316646>`_
 
-[4]  L. You, S. Liu, Y. Chang, C. Yuen*,"A triple-step asynchronous federated learning mechanism for client activation, interaction optimization, and aggregation enhancement", IEEE Internet of Things Journal, 2022.
+    [3]  `L. You, Z. Guo, B. Zuo, Y. Chang*, C. Yuen,"SLMFed: A Stage-based and Layer-wise Mechanism for Incremental Federated Learning to Assist Dynamic and Ubiquitous IoT", IEEE Internet of Things Journal, 2024. <https://ieeexplore.ieee.org/document/10399971>`_
 
-[5]  S. Liu, L. You*, R. Zhu, B. Liu, R. Liu, Y. Han, C. Yuen,"AFM3D: An Asynchronous Federated Meta-learning Framework for Driver Distraction Detection", IEEE Transactions on Intelligent Transportation Systems, 2024.
+    [4]  `L. You, S. Liu, Y. Chang, C. Yuen*,"A triple-step asynchronous federated learning mechanism for client activation, interaction optimization, and aggregation enhancement", IEEE Internet of Things Journal, 2022. <https://ieeexplore.ieee.org/document/9815310>`_
+
+    [5]  `S. Liu, L. You*, R. Zhu, B. Liu, R. Liu, Y. Han, C. Yuen,"AFM3D: An Asynchronous Federated Meta-learning Framework for Driver Distraction Detection", IEEE Transactions on Intelligent Transportation Systems, 2024. <https://ieeexplore.ieee.org/document/10423999>`_
