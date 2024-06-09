@@ -75,3 +75,12 @@ Contact
 -------
 
 For any questions or issues, please contact the development team at `guozh29@mail2.sysu.edu.cn`.
+
+
+[1]  L. You, S. Liu, B. Zuo, C. Yuen*, D. Niyato, H. V. Poor,“Federated and Asynchronized Learning for Autonomous and Intelligent Things”, IEEE Network Magazine, 2023.
+
+[2]  L. You, S. Liu, T. Wang, B. Zuo, Y. Chang, C. Yuen*,“AiFed: An Adaptive and Integrated Mechanism for Asynchronous Federated Data Mining”, IEEE Transactions on Knowledge and Data Engineering, 2023.
+
+[3]  L. You, Z. Guo, B. Zuo, Y. Chang*, C. Yuen,“SLMFed: A Stage-based and Layer-wise Mechanism for Incremental Federated Learning to Assist Dynamic and Ubiquitous IoT”, IEEE Internet of Things Journal, 2024.
+
+[4]  L. You, S. Liu, Y. Chang, C. Yuen*, “A triple-step asynchronous federated learning mechanism for client activation, interaction optimization, and aggregation enhancement”, IEEE Internet of Things Journal, 2022.
