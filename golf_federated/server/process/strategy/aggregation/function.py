@@ -422,16 +422,15 @@ def Cedarsyn(
                 else:
                     judge_sign = 0
             if judge_sign == 0:
-                if (global_param is None or id == 0):
+                if j == 0:
                     param_tem = Variable(torch.zeros_like(global_param))
                     global_param.data.copy_(param_tem.data)
                 global_param.data.add_(client_param.data * aggregate_percentage[j])
             else:
-                if (global_param is None or id == 0):
+                if j == 0:
                     param_tem = Variable(torch.zeros_like(global_param))
                     global_param.data.copy_(param_tem.data)
                 for layer in require_judge_layer:
-
                     if global_name.__contains__(layer):
                         idx = list(require_judge_layer).index(layer)
                 if upgrade_bool_list[j][idx] == 1:
