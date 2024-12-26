@@ -323,9 +323,9 @@ class CedarModel(BaseModel):
             correct_all += correct
             query_y_c = query_y.cpu().numpy()  # ----
             query_pred_c = query_pred.cpu().numpy()  # ----
-            precision = precision_score(query_pred_c, query_y_c, average='macro')
-            recall = recall_score(query_pred_c, query_y_c, average='macro')
-            f1 = f1_score(query_pred_c, query_y_c, average='macro')
+            precision = precision_score(query_pred_c, query_y_c, average='macro',zero_division=0)
+            recall = recall_score(query_pred_c, query_y_c, average='macro',zero_division=0)
+            f1 = f1_score(query_pred_c, query_y_c, average='macro',zero_division=0)
             mcc = matthews_corrcoef(query_pred_c, query_y_c)
             precision_all += precision
             recall_all += recall
@@ -393,9 +393,9 @@ class CedarModel(BaseModel):
             total += len(query_y)
             query_y_c = query_y.cpu().numpy()
             query_pred_c = query_pred.cpu().numpy()
-            precision = precision_score(query_pred_c, query_y_c, average='macro')
-            recall = recall_score(query_pred_c, query_y_c, average='macro')
-            f1 = f1_score(query_pred_c, query_y_c, average='macro')
+            precision = precision_score(query_pred_c, query_y_c, average='macro',zero_division=0)
+            recall = recall_score(query_pred_c, query_y_c, average='macro',zero_division=0)
+            f1 = f1_score(query_pred_c, query_y_c, average='macro',zero_division=0)
             mcc = matthews_corrcoef(query_pred_c, query_y_c)
             precision_all += precision
             recall_all += recall
