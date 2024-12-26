@@ -1,0 +1,43 @@
+# Example for Cedar
+
+## Overview
+This is a test example designed for Cedar. The test data required for execution is available in the main directory under:
+```
+/example/data/non_iid_data/
+```
+This example allows users to experiment with federated learning and customize various settings.
+
+---
+
+## System Requirements
+- **Hardware:**
+  - No specialized or non-standard hardware is required.
+  - If your system has insufficient memory to run the project, consider adjusting the `batchsize` or switching to smaller datasets.
+
+- **GPU/CPU Options:**
+  - If you do not have access to a GPU, the program can be run in CPU mode by modifying the settings.
+
+---
+
+## Expected Output
+- **Accuracy:**
+  - Due to variations in random seeds and device-specific behavior, the expected accuracy after running the example is approximately **58%**.
+
+---
+
+## Expected Run Time
+- **Setup:**
+  - The expected runtime was tested on a personal computer with the following specifications:
+    - **CPU:** AMD Ryzen 7 5800X
+    - **GPU:** NVIDIA GeForce RTX 3060
+
+- **Runtime Details:**
+  - Completing the entire pipeline, which includes 100 rounds of training across all clients and 20 rounds of deployment, takes approximately **4.5 hours**.
+
+---
+
+## Notes
+- Feel free to modify the provided configurations to suit your setup.
+- Ensure that the data path is correctly set to `/example/data/non_iid_data/` for seamless execution.
+
+For more information or troubleshooting tips, refer to the documentation or open an issue in this repository.
