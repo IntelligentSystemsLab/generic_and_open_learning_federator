@@ -148,4 +148,7 @@ class BaseClient(object):
 
         # Call the trainer to stop local training.
         loggerhear.log("Client Info  ", "Stop training on %s!" % self.client_name)
-        self.trainer.stop()
+        try:
+            self.trainer.stop()
+        except:
+            self.trainer.stop_trainer()
