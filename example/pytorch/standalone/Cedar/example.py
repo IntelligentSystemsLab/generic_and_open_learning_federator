@@ -22,8 +22,10 @@ from golf_federated.client.process.config.model.torchmodel import CedarModel
 from golf_federated.client.process.config.trainer.direct import CedarTrainer
 from golf_federated.server.process.config.task.synchronous import CedarTask
 from golf_federated.server.process.strategy.aggregation.synchronous import Cedar_syn
+from golf_federated.utils.data import random_seed
 
 if __name__ == '__main__':
+    random_seed(2024)
     train_path = '../../../data/non_iid_data/sfddd/' + 'train_client'
     test_path = '../../../data/non_iid_data/sfddd/' + 'test_client'
     train_file_set = os.listdir(train_path)
