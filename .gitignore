@@ -152,3 +152,4 @@ cython_debug/
 #.idea/
 /example/tensorflow/multidevices/run_customMNIST_direct/client1/.idea
 /example/tensorflow/multidevices/run_customMNIST_direct/server/.idea
+/example/pytorch/standalone/Cedar/result_save
