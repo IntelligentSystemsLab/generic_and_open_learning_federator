@@ -98,4 +98,6 @@ if __name__ == '__main__':
         client_objects=train_clients
     )
     result_localize = task.run_localization(20)
+    if not os.path.exists('./result_save_test'):
+        os.mkdir('./result_save_test')
     result_localize.to_excel('./result_save_test/localize_result.xlsx', index=False)
