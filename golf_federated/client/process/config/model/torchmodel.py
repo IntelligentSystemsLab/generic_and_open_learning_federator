@@ -201,6 +201,8 @@ class CedarModel(BaseModel):
         Model training.
 
         """
+        
+        self.global_net = deepcopy(self.model)
 
         self.loss = self.loss.to(self.process_unit)
         self.model = self.model.to(self.process_unit)
@@ -246,7 +248,6 @@ class CedarModel(BaseModel):
                 epoch, self.train_epoch, training_loss / training_total))
         self.loss = self.loss.to('cpu')
         self.model = self.model.to('cpu')
-        self.global_net = deepcopy(self.model)
         del support_x, support_y, query_y, query_x
         gc.collect()
         torch.cuda.empty_cache()
