@@ -201,8 +201,6 @@ class CedarModel(BaseModel):
         Model training.
 
         """
-        
-        self.global_net = deepcopy(self.model)
 
         self.loss = self.loss.to(self.process_unit)
         self.model = self.model.to(self.process_unit)
